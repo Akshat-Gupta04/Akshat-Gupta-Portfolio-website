@@ -85,3 +85,13 @@ document.getElementById("user-input").addEventListener("keypress", function (e) 
         });
     });
 });
+// Typing Effect for Name
+document.addEventListener("DOMContentLoaded", function () {
+    let typed = new Typed("#typed-name", {
+      strings: ["Akshat Gupta", "AI Engineer", "Deep Learning Enthusiast"],
+      typeSpeed: 100,
+      backSpeed: 60,
+      backDelay: 2000,
+      loop: true,
+    });
+  });
