@@ -2,615 +2,470 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Akshat Gupta AI Portfolio">
-    <meta name="author" content="Akshat Gupta">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akshat Gupta - AI Portfolio</title>
+  <meta name="description" content="Akshat Gupta AI Portfolio">
+  <meta name="author" content="Akshat Gupta">
 
-    <title>Akshat Gupta - AI Portfolio</title>
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-digimedia-v1.css">
-    <link rel="stylesheet" href="assets/css/animated.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-digimedia-v1.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/animated.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
-    <style>
-      body {
-          font-family: 'Poppins', sans-serif;
-          line-height: 1.7;
-          background-color: #f8f9fc;
-      }
-  
-      .section {
-          padding: 100px 0;
-      }
-  
-      .main-banner {
-          background: linear-gradient(to bottom right, #ff7eb3, #ff758c, #ff3c83);
-          color: #ffffff;
-          padding: 120px 0;
-          position: relative;
-          text-align: left;
-      }
-  
-      .main-banner h2,
-      .main-banner p {
-          z-index: 2;
-          position: relative;
-      }
-  
-      .dark-text {
-          color: #000000 !important;
-      }
-  
-      .main-banner .btn {
-          background: #ffffff;
-          color: #ff3c83;
-          font-weight: bold;
-          border-radius: 50px;
-          padding: 15px 35px;
-          margin-top: 20px;
-          transition: all 0.3s ease-in-out;
-      }
-  
-      .main-banner .btn:hover {
-          background: #ff3c83;
-          color: #ffffff;
-          transform: scale(1.05);
-      }
-  
-      .about-section {
-          background: linear-gradient(to right, #fef7ff, #ffeef2);
-          color: #444;
-      }
-  
-      .skills {
-          background: #ffffff;
-          padding: 120px 0;
-      }
-  
-      .skills .skill-item {
-          margin-bottom: 50px;
-      }
-  
-      .skills .skill-item img {
-          transition: transform 0.3s ease;
-      }
-  
-      .skills .skill-item:hover img {
-          transform: scale(1.15);
-      }
-  
-      .projects {
-          background: linear-gradient(to bottom left, #ffdccd, #fff1e1);
-          padding: 120px 0;
-      }
-  
-      .projects .project-item {
-          background: #ffffff;
-          border: 1px solid #ddd;
-          transition: all 0.3s ease-in-out;
-          padding: 20px;
-          border-radius: 15px;
-          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      }
-  
-      .projects .project-item:hover {
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-          transform: translateY(-5px);
-      }
-  
-      .certifications {
-          background: linear-gradient(to right, #ffe6f3, #f8d9e8);
-          padding: 100px 0;
-          color: #333;
-      }
-  
-      .contact {
-          background: #ffffff;
-      }
-  
-      .contact .form-control {
-          margin-bottom: 20px;
-          padding: 15px;
-          border-radius: 8px;
-          border: 1px solid #ddd;
-      }
-  
-      .contact .btn {
-          background: #ff3c83;
-          color: #ffffff;
-          border-radius: 50px;
-          font-weight: bold;
-      }
-  
-      .contact .btn:hover {
-          background: #ffffff;
-          color: #ff3c83;
-          border: 1px solid #ff3c83;
-      }
-  
-      footer {
-          background: #222;
-          color: #aaa;
-          padding: 30px 0;
-      }
-  
-      footer p {
-          margin: 0;
-      }
-  
-      /* Floating Chat Button */
-      .floating-chat-btn {
-          position: fixed;
-          bottom: 30px;
-          right: 30px;
-          z-index: 100;
-      }
-  
-      .floating-chat-btn .btn {
-          background-color: #ff3c83;
-          border-radius: 50%;
-          padding: 15px;
-          border: none;
-          color: white;
-          font-size: 18px;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-          cursor: pointer;
-          transition: all 0.3s;
-      }
-  
-      .floating-chat-btn .btn:hover {
-          background-color: #ffffff;
-          color: #ff3c83;
-      }
-  
-      /* Floating Chat Window */
+  <!-- Custom Inline Styles for Extra Responsiveness -->
+  <style>
+    /* Adjust the floating chat window on smaller screens */
+    @media (max-width: 768px) {
       .floating-chat-window {
-          display: none; /* Hidden by default */
-          position: fixed;
-          bottom: 90px;
-          right: 30px;
-          width: 350px;
-          max-height: 500px;
-          background-color: #f7f7f7;
-          border-radius: 10px;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-          z-index: 100;
-          overflow: hidden;
-          border: 2px solid #ddd;
+        width: 90%;
+        right: 5%;
       }
-  
-      .chat-header {
-          background-color: #ff3c83;
-          color: white;
-          padding: 10px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-      }
-  
-      .chat-header h5 {
-          margin: 0;
-          font-size: 1.2rem;
-      }
-  
-      .chat-header .close-btn {
-          background: none;
-          border: none;
-          color: white;
-          font-size: 20px;
-          cursor: pointer;
-      }
-  
-      .chat-body {
-          padding: 15px;
-          max-height: 350px;
-          overflow-y: auto;
-          background: #ffffff;
-      }
-  
-      .chat-body .message {
-          padding: 8px 12px;
-          background-color: #f0f0f0;
-          border-radius: 15px;
-          margin-bottom: 10px;
-          max-width: 80%;
-          margin-left: 10px;
-      }
-  
-      .chat-body .message.ai {
-          background-color: #ff3c83;
-          color: white;
-          align-self: flex-start;
-      }
-  
-      .chat-body .message.user {
-          background-color: #00c4cc;
-          color: white;
-          align-self: flex-end;
-      }
-  
-      .chat-input {
-          padding: 15px;
-          background-color: #f7f7f7;
-          border-top: 1px solid #ddd;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-      }
-  
-      .chat-input textarea {
-          width: 80%;
-          padding: 10px;
-          border-radius: 5px;
-          border: 1px solid #ddd;
-          font-size: 14px;
-      }
-  
-      .chat-input button {
-          padding: 10px 20px;
-          background-color: #ff3c83;
-          border: none;
-          color: white;
-          font-size: 14px;
-          border-radius: 5px;
-          cursor: pointer;
-      }
-  
-      .chat-input button:hover {
-          background-color: #e22f71;
-      }
+    }
   </style>
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <ul class="nav">
-                            <li><a href="#top" class="active">Home</a></li>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#skills">Skills</a></li>
-                            <li><a href="#projects">Projects</a></li>
-                            <li><a href="#certifications">Certifications</a></li>
-                            <li><a href="#resume">Resume</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                        </ul>
-                        <a class="menu-trigger">
-                            <span>Menu</span>
-                        </a>
-                    </nav>
-                </div>
-            </div>
+  <!-- ***** Header / Navbar ***** -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#top">
+          <span class="logo-text">Akshat Gupta</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#top">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills">Skills</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#certifications">Certifications</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+            <!-- Download Resume button with a distinct style -->
+            <li class="nav-item">
+              <a class="nav-link download-resume" href="{{ url_for('static', filename='images/resume.pdf') }}" download>Download Resume</a>
+            </li>
+          </ul>
         </div>
-    </header>
-
-    <!-- ***** Main Banner Area Start ***** -->
-<div id="top" class="main-banner wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s" style="background: linear-gradient(135deg, #f94b88, #ff7db9); position: relative;">
-  <div class="container">
-      <div class="row align-items-center">
-          <!-- Text Section -->
-          <div class="col-lg-6">
-              <h6 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s" style="text-transform: uppercase; color: #ffffff; font-size: 22px; font-weight: 700; letter-spacing: 2px;">
-                  Welcome to My Portfolio
-              </h6>
-              <h2 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.6s" style="color: #ffffff; font-size: 4.5rem; font-weight: 900;">
-                I'm <span style="color: #191970;">Akshat Gupta</span>
-            </h2>
-            <p class="wow fadeInLeft dark-text" data-wow-duration="1s" data-wow-delay="0.9s">
-                  A passionate AI innovator, solving real-world challenges with cutting-edge technologies like machine learning, NLP, and more.
-              </p>
-               <p class="wow fadeInLeft dark-text" data-wow-duration="1s" data-wow-delay="0.9s">
-                  Explore my portfolio to see the latest projects where I applied AI to drive real-world impact and bring innovation to various domains.
-              </p>
-               <p class="wow fadeInLeft dark-text" data-wow-duration="1s" data-wow-delay="0.9s">
-                  <a href="#contact" class="btn btn-lg" style="background: #ff6ec7; color: #ffffff; font-weight: bold; padding: 15px 35px; border-radius: 50px; transition: transform 0.3s ease, background 0.3s ease;">
-                      Get In Touch
-                  </a>
-              </div>
-          </div>
       </div>
-  </div>
+    </nav>
+  </header>
 
-  
- 
-
-  <!-- Top and Bottom Decorative Containers -->
-
- 
-  
-  <!-- Portfolio Left Decoration -->
-  <div style="position: absolute; top: 100px; left: -80px; opacity: 0.2;">
-      <img src="assets/images/portfolio-left-dec.jpg" alt="Portfolio Left Decoration" style="width: 250px; height: auto;">
-  </div>
-
-  <!-- Top Right Decorative Element -->
-  <div style="position: absolute; top: 0; right: 0;">
-      <img src="assets/images/top-right-portfolio-dec.png" alt="Top Right Portfolio Decoration" style="width: 150px; height: auto; opacity: 0.2;">
-  </div>
-
-
-<!-- ***** Main Banner Area End ***** -->
-     <!-- ***** About Section Start ***** -->
-<div id="about" class="about-section section">
-  <div class="container">
+  <!-- ***** Main Banner Area ***** -->
+  <div id="top" class="main-banner wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container">
       <div class="row align-items-center">
-          <div class="col-lg-6">
-              <img src="image copy.png"About Me" class="img-fluid wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
-          </div>
-          <div class="col-lg-6">
-              <h2 class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s">About Me</h2>
-              <p class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.6s">
-                  I am a Computer Science student specializing in Artificial Intelligence at Bennett University. My expertise includes machine learning, NLP, and generative AI. I thrive on solving real-world problems with technology.
-              </p>
-          </div>
+        <!-- Text Section -->
+        <div class="col-lg-6">
+          <h6 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s" 
+              style="text-transform: uppercase; color: #ffffff; font-size: 22px; font-weight: 700; letter-spacing: 2px;">
+            Welcome to My Portfolio
+          </h6>
+          <h2>
+            <span style="color: #ffffff;">I'm</span> 
+            <span id="animated-name">
+              <span>Akshat Gupta</span>
+              <span>अक्षत गुप्ता</span>
+            </span>
+          </h2>
+          <p class="wow fadeInLeft dark-text" data-wow-duration="1s" data-wow-delay="0.9s">
+            A passionate AI innovator, solving real-world challenges with cutting-edge technologies like machine learning, NLP, and more.
+          </p>
+          <p class="wow fadeInLeft dark-text" data-wow-duration="1s" data-wow-delay="0.9s">
+            Explore my portfolio to see the latest projects where I applied AI to drive real-world impact and bring innovation to various domains.
+          </p>
+          <p class="wow fadeInLeft dark-text" data-wow-duration="1s" data-wow-delay="0.9s">
+            <a href="#contact" class="btn btn-lg">Get In Touch</a>
+          </p>
+        </div>
       </div>
+    </div>
+  </div>
+  <!-- ***** End Main Banner ***** -->
+
+  <!-- ***** About Section ***** -->
+  <div id="about" class="about-section section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <img src="{{ url_for('static', filename='images/profile_pic.png') }}" alt="About Me" 
+               class="img-fluid wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+        </div>
+        <div class="col-lg-6">
+          <h2 class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s">About Me</h2>
+          <p class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.6s">
+            I am a Computer Science student specializing in Artificial Intelligence at Bennett University. My expertise includes machine learning, NLP, and generative AI. I thrive on solving real-world problems with technology.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ***** End About Section ***** -->
+  <!-- ***** Academic Highlights Section ***** -->
+<div id="academics" class="academics section">
+  <div class="container">
+    <h2 class="text-center wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">Academic Highlights</h2>
+    <p class="text-center mb-5">An overview of my academic achievements.</p>
+    <div class="row">
+      <!-- B.Tech CGPA Card -->
+      <div class="col-lg-4 col-md-6 mb-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+        <div class="academic-card">
+          <h4>B.Tech CGPA</h4>
+          <p>8.64 / 10</p>
+        </div>
+      </div>
+      <!-- Intermediate Score Card -->
+      <div class="col-lg-4 col-md-6 mb-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+        <div class="academic-card">
+          <h4>Intermediate</h4>
+          <p>89%</p>
+        </div>
+      </div>
+      <!-- High School Score Card -->
+      <div class="col-lg-4 col-md-6 mb-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
+        <div class="academic-card">
+          <h4>High School</h4>
+          <p>92%</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-<!-- ***** About Section End ***** -->
-
-<!-- ***** Skills Section Start ***** -->
-<div id="skills" class="skills section">
-  <div class="container">
+  <!-- ***** Skills Section ***** -->
+  <div id="skills" class="skills section">
+    <div class="container">
       <h2 class="text-center">My Skills</h2>
       <div class="row text-center">
-          <div class="col-lg-4 skill-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-              <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Python" style="width: 70px; height: 70px;">
-              <h4>Python</h4>
-              <p>Proficient in Python for AI and ML development, including libraries like TensorFlow, NumPy, and Pandas.</p>
-          </div>
-          <div class="col-lg-4 skill-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
-              <img src="https://cdn-icons-png.flaticon.com/512/2306/2306145.png" alt="Machine Learning" style="width: 70px; height: 70px;">
-              <h4>Machine Learning</h4>
-              <p>Experienced in developing predictive models using supervised and unsupervised learning techniques.</p>
-          </div>
-          <div class="col-lg-4 skill-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
-              <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" alt="Deep Learning" style="width: 70px; height: 70px;">
-              <h4>Deep Learning</h4>
-              <p>Specialized in neural network architectures, including CNNs, RNNs, and GANs.</p>
-          </div>
-          <div class="col-lg-4 skill-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.8s">
-            <img src="https://cdn-icons-png.flaticon.com/512/4144/4144850.png" alt="RAG Models" style="width: 70px; height: 70px;">
-            <h4>RAG Models</h4>
-            <p>Expert in Retrieval-Augmented Generation for intelligent AI systems.</p>
+        <!-- Skill Item 1 -->
+        <div class="col-lg-4 col-md-6 mb-4 skill-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Python" style="width: 70px; height: 70px;">
+          <h4>Python</h4>
+          <p>Proficient in Python for AI and ML development, including libraries like TensorFlow, NumPy, and Pandas.</p>
         </div>
-          <div class="col-lg-4 skill-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
-              <img src="https://cdn-icons-png.flaticon.com/512/5969/5969475.png" alt="Agentic AI" style="width: 70px; height: 70px;">
-              <h4>Agentic AI</h4>
-              <p>Designing autonomous agents to solve dynamic real-world problems.</p>
-          </div>
-          <div class="col-lg-4 skill-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.2s">
-            <img src="https://cdn-icons-png.flaticon.com/512/1904/1904465.png" alt="NLP" style="width: 70px; height: 70px;">
-            <h4>NLP</h4>
-            <p>Building intelligent systems for language understanding, text analysis, and conversational AI.</p>
+        <!-- Skill Item 2 -->
+        <div class="col-lg-4 col-md-6 mb-4 skill-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+          <img src="https://cdn-icons-png.flaticon.com/512/2306/2306145.png" alt="Machine Learning" style="width: 70px; height: 70px;">
+          <h4>Machine Learning</h4>
+          <p>Experienced in developing predictive models using supervised and unsupervised learning techniques.</p>
+        </div>
+        <!-- Skill Item 3 -->
+        <div class="col-lg-4 col-md-6 mb-4 skill-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
+          <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" alt="Deep Learning" style="width: 70px; height: 70px;">
+          <h4>Deep Learning</h4>
+          <p>Specialized in neural network architectures, including CNNs, RNNs, and GANs.</p>
+        </div>
+        <!-- Skill Item 4 -->
+        <div class="col-lg-4 col-md-6 mb-4 skill-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.8s">
+          <img src="https://cdn-icons-png.flaticon.com/512/4144/4144850.png" alt="RAG Models" style="width: 70px; height: 70px;">
+          <h4>RAG Models</h4>
+          <p>Expert in Retrieval-Augmented Generation for intelligent AI systems.</p>
+        </div>
+        <!-- Skill Item 5 -->
+        <div class="col-lg-4 col-md-6 mb-4 skill-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
+          <img src="https://cdn-icons-png.flaticon.com/512/5969/5969475.png" alt="Agentic AI" style="width: 70px; height: 70px;">
+          <h4>Agentic AI</h4>
+          <p>Designing autonomous agents to solve dynamic real-world problems.</p>
+        </div>
+        <!-- Skill Item 6 -->
+        <div class="col-lg-4 col-md-6 mb-4 skill-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.2s">
+          <img src="https://cdn-icons-png.flaticon.com/512/1904/1904465.png" alt="NLP" style="width: 70px; height: 70px;">
+          <h4>NLP</h4>
+          <p>Building intelligent systems for language understanding, text analysis, and conversational AI.</p>
         </div>
       </div>
+    </div>
   </div>
-</div>
-<!-- ***** Skills Section End ***** -->
- <!-- ***** Projects Section Start ***** -->
-<div id="projects" class="projects section">
-  <div class="container">
-      <h2 class="text-center wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">My Projects</h2>
-      <div class="row">
-          <!-- Project 1 -->
-          <div class="col-lg-4 mb-4">
-              <div class="project-item p-4 text-center border rounded shadow-sm wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-                  <img src="assets/images/project1.png" alt="Akshar" class="img-fluid mb-3">
-                  <h4>Akshar</h4>
-                  <p>A chat app that translates text and audio messages in real time, built using Flutter.</p>
-                  <a href="https://github.com/Akshat-Gupta04/AksharApp.git" class="btn btn-primary btn-sm mt-2">View on GitHub</a>
-              </div>
-          </div>
-          <!-- Project 2 -->
-          <div class="col-lg-4 mb-4">
-              <div class="project-item p-4 text-center border rounded shadow-sm wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
-                  <img src="assets/images/project2.png" alt="FaceCheck" class="img-fluid mb-3">
-                  <h4>FaceCheck</h4>
-                  <p>A facial recognition-based attendance system integrated with a SQL database.</p>
-                  <a href="https://github.com/Akshat-Gupta04/FaceCheck_complete.git" class="btn btn-primary btn-sm mt-2">View on GitHub</a>
-              </div>
-          </div>
-          <!-- Project 3 -->
-          <div class="col-lg-4 mb-4">
-              <div class="project-item p-4 text-center border rounded shadow-sm wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
-                  <img src="assets/images/project3.png" alt="FacePay" class="img-fluid mb-3">
-                  <h4>FacePay</h4>
-                  <p>An AI-based payment system using facial recognition for secure UPI transactions.</p>
-                  <a href="https://github.com/Akshat-Gupta04/FacePay.git" class="btn btn-primary btn-sm mt-2">View on GitHub</a>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
-<!-- ***** Projects Section End ***** -->
+  <!-- ***** End Skills Section ***** -->
 
-<!-- ***** Certifications Section Start ***** -->
-<div id="certifications" class="certifications section">
-  <div class="container">
+  <!-- ***** Projects Section ***** -->
+  <div id="projects" class="projects section">
+    <div class="container">
+      <h2 class="text-center wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">My Projects</h2>
+      <p class="text-center mb-5">Here are some of my featured projects that showcase my skills and expertise.</p>
+      <div class="row">
+        <!-- Project 1 -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="project-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+            <div class="project-card">
+              <img src="{{ url_for('static', filename='images/project1.png') }}" alt="Project 1" class="project-image img-fluid">
+              <div class="project-overlay">
+                <h4>Akshar</h4>
+                <p>A chat app that translates text and audio messages in real time, built using Flutter.</p>
+                <div class="tech-stack">
+                  <span class="badge">Flutter</span>
+                  <span class="badge">Dart</span>
+                  <span class="badge">AI</span>
+                </div>
+                <a href="https://github.com/Akshat-Gupta04/AksharApp.git" class="btn btn-outline-light btn-sm">View on GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="project-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+            <div class="project-card">
+              <img src="{{ url_for('static', filename='images/project2.png') }}" alt="Project 2" class="project-image img-fluid">
+              <div class="project-overlay">
+                <h4>FaceCheck</h4>
+                <p>A facial recognition-based attendance system integrated with a SQL database.</p>
+                <div class="tech-stack">
+                  <span class="badge">Python</span>
+                  <span class="badge">OpenCV</span>
+                  <span class="badge">SQL</span>
+                </div>
+                <a href="https://github.com/Akshat-Gupta04/FaceCheck_complete.git" class="btn btn-outline-light btn-sm">View on GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Project 3 -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="project-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
+            <div class="project-card">
+              <img src="{{ url_for('static', filename='images/project3.png') }}" alt="Project 3" class="project-image img-fluid">
+              <div class="project-overlay">
+                <h4>FacePay</h4>
+                <p>An AI-based payment system using facial recognition for secure UPI transactions.</p>
+                <div class="tech-stack">
+                  <span class="badge">AI</span>
+                  <span class="badge">Python</span>
+                  <span class="badge">Facial Recognition</span>
+                </div>
+                <a href="https://github.com/Akshat-Gupta04/FacePay.git" class="btn btn-outline-light btn-sm">View on GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ***** End Projects Section ***** -->
+
+  <!-- ***** Certifications Section ***** -->
+  <div id="certifications" class="certifications section">
+    <div class="container">
       <h2 class="text-center wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">Certifications</h2>
       <div class="row text-center justify-content-center">
-          <!-- Certification 1 -->
-          <div class="col-lg-3 col-md-4 col-sm-6 mb-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-              <h5>Machine Learning by IBM</h5>
-          </div>
-          <!-- Certification 2 -->
-          <div class="col-lg-3 col-md-4 col-sm-6 mb-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
-              <h5>Deep Learning by Google</h5>
-          </div>
-          <!-- Certification 3 -->
-          <div class="col-lg-3 col-md-4 col-sm-6 mb-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
-              <h5>Networking by Coursera</h5>
-          </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+          <h5>Machine Learning by IBM</h5>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+          <h5>Deep Learning by Google</h5>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
+          <h5>Networking by Coursera</h5>
+        </div>
       </div>
+    </div>
   </div>
-</div>
-<!-- ***** Certifications Section End ***** -->
- <!-- ***** Resume Section Start ***** -->
-<div id="resume" class="resume section">
-  <div class="container text-center wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">
-      <h2>Resume</h2>
-      <p>Explore my qualifications and experience by downloading my resume.</p>
-      <a href="resume.pdf" class="btn btn-primary btn-lg mt-3" download>Download Resume</a>
-  </div>
-</div>
-<!-- ***** Resume Section End ***** -->
+  <!-- ***** End Certifications Section ***** -->
 
-<!-- ***** Contact Section Start ***** -->
-<div id="contact" class="contact section">
-  <div class="container">
+  <!-- ***** Contact Section ***** -->
+  <div id="contact" class="contact section">
+    <div class="container">
       <h2 class="text-center wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">Contact Me</h2>
       <div class="row justify-content-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
-          <div class="col-lg-6">
-              <form action="mailto:akshat9306@gmail.com" method="post" enctype="text/plain">
-                  <div class="form-group mb-3">
-                      <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-                  </div>
-                  <div class="form-group mb-3">
-                      <input type="email" name="email" class="form-control" placeholder="Your Email" required>
-                  </div>
-                  <div class="form-group mb-3">
-                      <textarea name="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
-                  </div>
-                  <div class="text-center">
-                      <button type="submit" class="btn btn-success btn-lg">Send Message</button>
-                  </div>
-              </form>
-          </div>
+        <div class="col-lg-6">
+          <form action="mailto:akshat9306@gmail.com" method="post" enctype="text/plain">
+            <div class="form-group mb-3">
+              <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="form-group mb-3">
+              <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+            </div>
+            <div class="form-group mb-3">
+              <textarea name="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-success btn-lg">Send Message</button>
+            </div>
+          </form>
+        </div>
       </div>
+    </div>
   </div>
-</div>
-<!-- ***** Contact Section End ***** -->
-<!-- Floating Chat Button -->
-<div class="floating-chat-btn">
-  <button id="chat-toggle" class="btn btn-circle">
-      <i class="fa fa-comments"></i> <!-- Use icon for chat button -->
-  </button>
-</div>
+  <!-- ***** End Contact Section ***** -->
 
-<!-- Floating Chat Window -->
-<div id="chat-window" class="floating-chat-window">
-  <div class="chat-header">
+  <!-- Back-to-Top Button -->
+  <button onclick="topFunction()" id="backToTopBtn" title="Go to top">&uarr;</button>
+
+  <!-- Floating Chat Button -->
+  <div class="floating-chat-btn">
+    <button id="chat-toggle" class="btn">
+      <img src="{{ url_for('static', filename='images/chat.svg') }}" alt="Chat Bot Icon" style="width: 24px; height: 24px;">
+    </button>
+  </div>
+
+  <!-- Floating Chat Window -->
+  <div id="chat-window" class="floating-chat-window d-flex flex-column">
+    <div class="chat-header">
       <h5>AI Assistant</h5>
       <button id="close-chat" class="close-btn">&times;</button>
-  </div>
-  <div class="chat-body" id="chat-body">
-      <!-- Chat messages will go here -->
-  </div>
-  <div class="chat-input">
+    </div>
+    <div class="chat-body flex-grow-1" id="chat-body"></div>
+    <div class="chat-input">
       <textarea id="user-input" placeholder="Ask me anything..." rows="2"></textarea>
       <button id="send-btn">Send</button>
+    </div>
   </div>
-</div>
-<script>
-  // Toggle chat window visibility
-document.getElementById("chat-toggle").addEventListener("click", function() {
-    var chatWindow = document.getElementById("chat-window");
-    chatWindow.style.display = chatWindow.style.display === "none" || chatWindow.style.display === "" ? "block" : "none";
-});
 
-// Close chat window
-document.getElementById("close-chat").addEventListener("click", function() {
-    document.getElementById("chat-window").style.display = "none";
-});
-
-// Handle sending message
-document.getElementById("send-btn").addEventListener("click", async function() {
-    var userInput = document.getElementById("user-input").value;
-    if (userInput.trim() !== "") {
-        // Show user message
-        addMessage(userInput, "user");
-
-        // Clear input field
-        document.getElementById("user-input").value = "";
-
-        // Show loading AI message
-        addMessage("Thinking...", "ai");
-
-        // Send user input to the backend using fetch
-        const response = await fetch('http://127.0.0.1:5000/ask', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ question: userInput })
-        });
-
-        const data = await response.json();
-        if (data.response) {
-            // Display AI response
-            updateAIResponse(data.response);
-        } else {
-            updateAIResponse("Sorry, I couldn't understand that.");
-        }
-    }
-});
-
-// Add user or AI message to the chat
-function addMessage(message, sender) {
-    var chatBody = document.getElementById("chat-body");
-    var messageElement = document.createElement("div");
-    messageElement.classList.add("message", sender);
-    messageElement.textContent = message;
-    chatBody.appendChild(messageElement);
-    chatBody.scrollTop = chatBody.scrollHeight; // Scroll to bottom
-}
-
-// Update AI response message
-function updateAIResponse(message) {
-    var chatBody = document.getElementById("chat-body");
-    var aiMessageElement = chatBody.querySelector(".message.ai");
-    if (aiMessageElement) {
-        aiMessageElement.textContent = message;
-    }
-}
-</script>
-
-<!-- ***** Footer Start ***** -->
-<footer>
+  <!-- Footer -->
+  <footer>
     <div class="container text-center">
-        <p class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s">
-            2025 © Akshat Gupta. All Rights Reserved.
-        </p>
-        <div class="social-links mt-3">
-            <a href="mailto:akshat9306@gmail.com" target="_blank" class="mx-2" style="color: #ffffff;">
-                <i class="fas fa-envelope" aria-hidden="true" style="font-size: 1.5rem;"></i>
-            </a>
-            <a href="https://github.com/Akshat-Gupta04" target="_blank" class="mx-2" style="color: #ffffff;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.65 7.65 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                </svg>
-            </a>
-            <a href="tel:+9306199632" class="mx-2" style="color: #ffffff;">
-                <i class="fas fa-phone" aria-hidden="true" style="font-size: 1.5rem;"></i>
-            </a>
-        </div>
+      <p class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s">
+        2025 © Akshat Gupta. All Rights Reserved.
+      </p>
+      <div class="social-links mt-3">
+        <a href="mailto:akshat9306@gmail.com" target="_blank" class="mx-2">
+          <img src="{{ url_for('static', filename='images/mail.svg') }}" alt="Email Icon" style="width: 24px; height: 24px;">
+        </a>
+        <a href="https://github.com/Akshat-Gupta04" target="_blank" class="mx-2">
+          <img src="{{ url_for('static', filename='images/github.svg') }}" alt="GitHub Icon" style="width: 24px; height: 24px;">
+        </a>
+        <a href="tel:+9306199632" class="mx-2">
+          <img src="{{ url_for('static', filename='images/alternate-phone.svg') }}" alt="Phone Icon" style="width: 24px; height: 24px;">
+        </a>
+      </div>
     </div>
   </footer>
-  <!-- ***** Footer End ***** -->
-  
-  <!-- Font Awesome Script -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 
-<!-- Scripts -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/owl-carousel.js"></script>
-<script src="assets/js/animation.js"></script>
-<script src="assets/js/imagesloaded.js"></script>
-<script src="assets/js/custom.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+  <!-- Scripts -->
+  <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/owl-carousel.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/animation.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/imagesloaded.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/animated-name.js') }}"></script>
+
+  <script>
+    // Toggle chat window visibility
+    document.getElementById("chat-toggle").addEventListener("click", function() {
+      document.getElementById("chat-window").classList.toggle("show");
+    });
+    // Close chat window
+    document.getElementById("close-chat").addEventListener("click", function() {
+      document.getElementById("chat-window").classList.remove("show");
+    });
+    // Handle sending message
+    document.getElementById("send-btn").addEventListener("click", async function() {
+      var userInput = document.getElementById("user-input").value;
+      if (userInput.trim() !== "") {
+        addMessage(userInput, "user");
+        document.getElementById("user-input").value = "";
+        addMessage("Thinking...", "ai");
+        try {
+          const response = await fetch('/ask', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ question: userInput })
+          });
+          const data = await response.json();
+          if (data.response) {
+            updateAIResponse(data.response);
+          } else {
+            updateAIResponse("Sorry, I couldn't understand that.");
+          }
+        } catch (error) {
+          updateAIResponse("Sorry, I'm having trouble connecting to the server.");
+          console.error("Error:", error);
+        }
+      }
+    });
+
+    // Add message to the chat
+    function addMessage(message, sender) {
+      var chatBody = document.getElementById("chat-body");
+      var messageElement = document.createElement("div");
+      messageElement.classList.add("message", sender);
+      if (sender === "user") {
+        messageElement.innerHTML = `
+          <div class="message-content">${escapeHtml(message)}</div>
+          <img src="{{ url_for('static', filename='images/person.svg') }}" alt="User Avatar" class="avatar">
+        `;
+      } else if (sender === "ai") {
+        messageElement.innerHTML = `
+          <img src="{{ url_for('static', filename='images/ai.svg') }}" alt="AI Avatar" class="avatar">
+          <div class="message-content">${escapeHtml(message)}</div>
+        `;
+      }
+      chatBody.appendChild(messageElement);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    // Update the last AI message with the response
+    function updateAIResponse(message) {
+      var chatBody = document.getElementById("chat-body");
+      var aiMessageElement = chatBody.querySelector(".message.ai:last-child");
+      if (aiMessageElement) {
+        aiMessageElement.querySelector(".message-content").textContent = message;
+      }
+    }
+
+    // Escape HTML to prevent XSS
+    function escapeHtml(text) {
+      var map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+    }
+
+    // Handle "Enter" key for sending messages
+    document.getElementById("user-input").addEventListener("keypress", function(e) {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        document.getElementById("send-btn").click();
+      }
+    });
+
+    // Back-to-Top Button functionality
+    var backToTopBtn = document.getElementById("backToTopBtn");
+    window.onscroll = function() { scrollFunction(); };
+    function scrollFunction() {
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopBtn.style.display = "block";
+      } else {
+        backToTopBtn.style.display = "none";
+      }
+    }
+    function topFunction() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
 </body>
 </html>

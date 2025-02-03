@@ -273,17 +273,35 @@ body {
     border: 1px solid #ff3c83;
 }
 
-/* Footer Styles */
+/* Updated Footer Styles: Light & Modern */
 footer {
-    background: #222;
-    color: #aaa;
+    background: #f5f5f5;          /* Light grey background */
+    color: #555555;               /* Darker grey text for readability */
     padding: 30px 0;
-}
-
-footer p {
+    text-align: center;
+    border-top: 1px solid #e0e0e0; /* Subtle top border */
+  }
+  
+  footer p {
     margin: 0;
-}
-
+    font-size: 0.95rem;
+  }
+  
+  /* Social Links in Footer */
+  footer .social-links {
+    margin-top: 15px;
+  }
+  
+  footer .social-links a {
+    margin: 0 10px;
+    color: inherit;             /* Inherit the footer text color */
+    transition: color 0.3s ease, opacity 0.3s ease;
+  }
+  
+  footer .social-links a:hover {
+    color: #888888;             /* Slightly lighter grey on hover */
+    opacity: 0.8;
+  }
 /* Back-to-Top Button Styles */
 #backToTopBtn {
     display: none; /* Hidden by default */
@@ -618,3 +636,19 @@ header {
       font-size: 1.5rem;
     }
   }
+  /* Distinct styling for the Download Resume link */
+.navbar-nav .download-resume {
+  background-color: #ef3a95;  /* Vibrant warm orange */
+  color: #ffffff !important;  /* White text */
+  padding: 8px 15px;
+  border-radius: 30px;
+  font-weight: bold;
+  margin-left: 15px;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+.navbar-nav .download-resume:hover {
+  background-color: #b42c1d;  /* Slightly darker on hover */
+  color: #ffffff !important;
+}
