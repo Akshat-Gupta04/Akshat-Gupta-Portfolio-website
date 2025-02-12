@@ -12,10 +12,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
 
   <!-- Bootstrap CSS -->
   <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -51,27 +47,22 @@
       /* Positioned in normal document flow so it appears only above the main banner */
     }
     .notification-text {
-      display: inline-block;
-      color: #fff;
-      font-size: 1.2rem;
-      font-family: 'Poppins', sans-serif;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-weight: 500;
-      /* Advanced gradient text effect */
-      background: linear-gradient(45deg, #f3ec78, #af4261);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
-      /* Endless scrolling animation */
-      animation: marquee 15s linear infinite;
-    }
-    @keyframes marquee {
-      0%   { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
-    
+  display: inline-block;
+  color: #fff;  /* Plain white text */
+  font-size: 1.2rem;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 500;
+  /* Removed gradient and text-fill properties for a normal font style */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.6); /* Retain subtle shadow for legibility */
+  animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
     
     /* --------------------------------------------------------------------
        SPLASH ANIMATION OVERLAY
@@ -166,24 +157,24 @@
       border-bottom: 2px solid #444;
     }
     .notification-text {
-      display: inline-block;
-      color: #fff;
-      font-size: 1.2rem;
-      font-family: 'Poppins', sans-serif;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-weight: 500;
-      background: linear-gradient(45deg, #f3ec78, #af4261);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
-      animation: marquee 15s linear infinite;
-    }
-    @keyframes marquee {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
+  display: inline-block;
+  font-size: 1.2rem;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: linear-gradient(45deg, #ffffff, #dddddd); /* Brighter gradient for higher contrast */
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Increased shadow for better legibility */
+  animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
   </style>
 </head>
 <body>
@@ -229,7 +220,7 @@
             <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
             <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
             <li class="nav-item">
-              <a class="nav-link download-resume" href="{{ url_for('static', filename='images/resume.pdf') }}" download>
+              <a class="nav-link download-resume" href="{{ url_for('static', filename='Resume_AkshatGupta.pdf') }}" download>
                 Download Resume
               </a>
             </li>
@@ -240,7 +231,7 @@
   </header>
   <div class="notification-banner">
     <div class="notification-text">
-      None of image is real, all are generated using Custom LORA model &bull;
+      None of image is real, all are generated using Custom LORA model &bull; Use the Floating AI chatbot to get more information about me and my projects&bull;
     </div>
   </div>
 
@@ -289,7 +280,7 @@
           About Me
         </h2>
         <p class="section-subtitle wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.5s">
-          AI Engineer • Innovator • Lifelong Learner
+          AI Enthusiast • Innovator • Lifelong Learner
         </p>
       </div>
       <div class="about-card-wrapper wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.7s">
@@ -300,7 +291,7 @@
           <div class="about-info">
             <h3>Welcome to my journey</h3>
             <p>
-              I’m a passionate AI Enthusiast focused on creating innovative machine learning and deep learning solutions for real-world challenges. When I’m not coding or researching, I explore the latest AI trends and experiment with new projects. I’m currently pursuing a B.Tech in Computer Science & Engineering at Bennett University, which has given me a strong technical foundation, but my true passion lies in applying AI to create transformative applications.
+              I am an enthusiastic AI student dedicated to artificial intelligence, machine learning, deep learning, and generative AI. Currently pursuing a B.Tech in Computer Science & Engineering at Bennett University, I develop innovative solutions that combine technical expertise with creative thinking. I constantly explore emerging trends, dive into new projects, and nurture my hobbies, all of which fuel my passion for advancing AI technology.
             </p>
             <a href="#contact" class="btn about-cta">Let’s Connect</a>
           </div>
@@ -349,7 +340,7 @@
               <div class="academic-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
                   <div class="academic-icon"><i class="fas fa-school"></i></div>
                   <h4>Higher Secondary</h4>
-                  <p>90% (CBSE, 2022)</p>
+                  <p>80% (CBSE, 2022)</p>
               </div>
           </div>
 
@@ -358,7 +349,7 @@
               <div class="academic-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.9s">
                   <div class="academic-icon"><i class="fas fa-book"></i></div>
                   <h4>Senior Secondary</h4>
-                  <p>92% (CBSE, 2020)</p>
+                  <p>95.2% (CBSE, 2020)</p>
               </div>
           </div>
 
@@ -397,47 +388,43 @@
 <!-- ***** Research Papers Section ***** -->
 <section id="research" class="research section">
   <div class="container">
-    <h2 class="text-center wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">Research Papers (Under Work)</h2>
+    <h2 class="text-center wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">Research Papers</h2>
     <p class="text-center mb-5 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
         Below are the research papers that I am currently working on.
     </p>
 
     <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="research-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+          <h4>Multi-Modal Meta Learner (M3L): A Unified, Scalable Architecture for State-of-the-Art Image Processing</h4>
+          <p><strong>Abstract:</strong>A state-of-the-art image processing model that unifies several advanced deep learning techniques into a single architecture. It integrates Sparse CNN, Vision Transformers, Graph Neural Networks, along with Diffusion Models, Neural Architecture Search, and Masked Autoencoders for self-supervised representation learning.</p>
+          <div class="research-links">
+            <a href="#" class="btn btn-outline-dark btn-sm" target="_blank">Work in Progress</a>
+           </div>
+        </div>
+      </div>
       <!-- Research Paper 1 -->
       <div class="col-lg-4 col-md-6">
         <div class="research-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-          <h4>Research Paper Title 1</h4>
-          <p><strong>Research Area:</strong> AI, Machine Learning</p>
-          <p><strong>Abstract:</strong> This paper discusses the advancements in machine learning algorithms, focusing on new architectures in deep learning.</p>
+          <h4>A Lightweight Deep Learning Framework for Detecting Potato Disease Using the Grasshopper Optimization Algorithm</h4>
+          <p><strong>Abstract:</strong>This study focused on artificial intelligence applied in potato disease detection,through a lightweight deep learning framework. The suggested model uses an integration of MobileNetV2 with Grasshopper Optimization Algorithm,for five potato diseases for classification.</p>
           <div class="research-links">
-            <a href="#" class="btn btn-outline-dark btn-sm" target="_blank">Work in Progress</a>
-            <a href="https://github.com/your-research-repo" class="btn btn-outline-dark btn-sm" target="_blank">GitHub Repo</a>
+            <a href="#" class="btn btn-outline-dark btn-sm" target="_blank">Work in Progress</a>  
           </div>
         </div>
       </div>
 
       <!-- Research Paper 2 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="research-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
-          <h4>Research Paper Title 2</h4>
-          <p><strong>Research Area:</strong> Deep Learning</p>
-          <p><strong>Abstract:</strong> An exploration of new techniques in deep neural networks for improved image recognition and classification.</p>
-          <div class="research-links">
-            <a href="#" class="btn btn-outline-dark btn-sm" target="_blank">Work in Progress</a>
-            <a href="https://github.com/your-research-repo" class="btn btn-outline-dark btn-sm" target="_blank">GitHub Repo</a>
-          </div>
-        </div>
-      </div>
+     
 
       <!-- Research Paper 3 -->
       <div class="col-lg-4 col-md-6">
         <div class="research-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
-          <h4>Research Paper Title 3</h4>
-          <p><strong>Research Area:</strong> Natural Language Processing</p>
-          <p><strong>Abstract:</strong> This paper investigates novel approaches to enhance text understanding using transformers and attention mechanisms.</p>
+          <h4>Deep Learning-Based Brain Tumor Identification</h4>
+          
+          <p><strong>Abstract:</strong> This research paper mainly focuses on using deep learning techniques, specifically convolutional neural networks (CNNs), to identify brain tumors from magnetic resonance imaging (MRI) scans. The chosen dataset contains scans of brain tumors consisting of 4 classes.</p>
           <div class="research-links">
             <a href="#" class="btn btn-outline-dark btn-sm" target="_blank">Work in Progress</a>
-            <a href="https://github.com/your-research-repo" class="btn btn-outline-dark btn-sm" target="_blank">GitHub Repo</a>
           </div>
         </div>
       </div>
@@ -558,6 +545,22 @@
           </div>
         </div>
       </div>
+      <div class="col-lg-4 col-md-6 mb-4 project-item">
+        <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+            <!-- Replace with your LoRA model image -->
+            <img src="{{ url_for('static', filename='images/829342611589419847.png') }}" alt="LoRA Model" class="project-image img-fluid">
+            <div class="project-overlay">
+                <h4>Fine-Tuned LoRA Model</h4>
+                <p>This custom LoRA model has been fine-tuned with my own face, and trained on Flux models as the base. It now has the ability to generate realistic, high-quality images of various types. From generating lifelike portraits to creative designs, this model reflects the power of generative AI and deep learning.</p>
+                <div class="tech-stack">
+                    <span class="badge">LoRA</span>
+                    <span class="badge">Generative AI</span>
+                    <span class="badge">Flux Models</span>
+                </div>
+                <!-- No GitHub link here -->
+            </div>
+        </div>
+    </div>
       <!-- Project 2 -->
       <div class="col-lg-4 col-md-6 mb-4 project-item">
         <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
@@ -656,6 +659,23 @@
             </div>
           </div>
         </div>
+        <!-- Project 2 Slide -->
+        <div class="slide" style="flex: 0 0 320px; margin: 0 10px;">
+          <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+            <img src="{{ url_for('static', filename='images/829342611589419847.png') }}" alt="lora_model" class="project-image img-fluid">
+            <div class="project-overlay">
+              <h4>Fine-Tuned LoRA Model</h4>
+              <p>This custom LoRA model has been fine-tuned with my own face, and trained on Flux models as the base. It now has the ability to generate realistic, high-quality images of various types. From generating lifelike portraits to creative designs, this model reflects the power of generative AI and deep learning.</p>
+              <div class="tech-stack">
+                  <span class="badge">LoRA</span>
+                  <span class="badge">Generative AI</span>
+                  <span class="badge">Flux Models</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+    
         <!-- Project 2 Slide -->
         <div class="slide" style="flex: 0 0 320px; margin: 0 10px;">
           <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
@@ -963,15 +983,16 @@
 
   // Generated Images Array – update these URLs as needed
   const generatedImages = [
-    'static/images/me-pics/829060827374972277.png',
-    'static/images/me-pics/829063434420179672.png',
-    'static/images/me-pics/829066921933721961.png',
-    'static/images/me-pics/829062682800884113.png',
-    'static/images/me-pics/829071186836091263.png',
-    'static/images/me-pics/829063434420179672.png',
-    'static/images/me-pics/829060943339091788.png',
-    'static/images/me-pics/829059805172734894.png',
-    'static/images/me-pics/829072604175351163.png'
+    'static/images/me-pics/a2.png',
+    'static/images/me-pics/a3.png',
+    'static/images/me-pics/a4.png',
+    'static/images/me-pics/a5.png',
+    'static/images/me-pics/a6.png',
+    'static/images/me-pics/a8.png',
+    'static/images/me-pics/a9.png',
+    'static/images/me-pics/a10.png',
+    'static/images/me-pics/a11.png',
+    
   ];
 
   let circleImages = []; // To store references to the circle images

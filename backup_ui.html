@@ -12,10 +12,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
 
   <!-- Bootstrap CSS -->
   <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -51,27 +47,22 @@
       /* Positioned in normal document flow so it appears only above the main banner */
     }
     .notification-text {
-      display: inline-block;
-      color: #fff;
-      font-size: 1.2rem;
-      font-family: 'Poppins', sans-serif;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-weight: 500;
-      /* Advanced gradient text effect */
-      background: linear-gradient(45deg, #f3ec78, #af4261);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
-      /* Endless scrolling animation */
-      animation: marquee 15s linear infinite;
-    }
-    @keyframes marquee {
-      0%   { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
-    
+  display: inline-block;
+  color: #fff;  /* Plain white text */
+  font-size: 1.2rem;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 500;
+  /* Removed gradient and text-fill properties for a normal font style */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.6); /* Retain subtle shadow for legibility */
+  animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
     
     /* --------------------------------------------------------------------
        SPLASH ANIMATION OVERLAY
@@ -166,24 +157,24 @@
       border-bottom: 2px solid #444;
     }
     .notification-text {
-      display: inline-block;
-      color: #fff;
-      font-size: 1.2rem;
-      font-family: 'Poppins', sans-serif;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-weight: 500;
-      background: linear-gradient(45deg, #f3ec78, #af4261);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
-      animation: marquee 15s linear infinite;
-    }
-    @keyframes marquee {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
+  display: inline-block;
+  font-size: 1.2rem;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: linear-gradient(45deg, #ffffff, #dddddd); /* Brighter gradient for higher contrast */
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Increased shadow for better legibility */
+  animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
   </style>
 </head>
 <body>
@@ -203,7 +194,7 @@
       <!-- Rotating circle images will be injected here by JavaScript -->
     </div>
     <div class="inner-alert">
-      All images are generated using my Custom LoRA model
+      My Portfolio
     </div>
   </div>
 
@@ -229,7 +220,7 @@
             <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
             <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
             <li class="nav-item">
-              <a class="nav-link download-resume" href="{{ url_for('static', filename='images/resume.pdf') }}" download>
+              <a class="nav-link download-resume" href="{{ url_for('static', filename='Resume_AkshatGupta.pdf') }}" download>
                 Download Resume
               </a>
             </li>
@@ -240,7 +231,7 @@
   </header>
   <div class="notification-banner">
     <div class="notification-text">
-      None of image is real, all are generated using Custom LORA model &bull;
+      None of image is real, all are generated using Custom LORA model &bull; Use the Floating AI chatbot to get more information about me and my projects&bull;
     </div>
   </div>
 
@@ -289,7 +280,7 @@
           About Me
         </h2>
         <p class="section-subtitle wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.5s">
-          AI Engineer • Innovator • Lifelong Learner
+          AI Enthusiast • Innovator • Lifelong Learner
         </p>
       </div>
       <div class="about-card-wrapper wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.7s">
@@ -300,7 +291,7 @@
           <div class="about-info">
             <h3>Welcome to my journey</h3>
             <p>
-              I’m a passionate AI Enthusiast focused on creating innovative machine learning and deep learning solutions for real-world challenges. When I’m not coding or researching, I explore the latest AI trends and experiment with new projects. I’m currently pursuing a B.Tech in Computer Science & Engineering at Bennett University, which has given me a strong technical foundation, but my true passion lies in applying AI to create transformative applications.
+              I am an enthusiastic AI student dedicated to artificial intelligence, machine learning, deep learning, and generative AI. Currently pursuing a B.Tech in Computer Science & Engineering at Bennett University, I develop innovative solutions that combine technical expertise with creative thinking. I constantly explore emerging trends, dive into new projects, and nurture my hobbies, all of which fuel my passion for advancing AI technology.
             </p>
             <a href="#contact" class="btn about-cta">Let’s Connect</a>
           </div>
@@ -349,7 +340,7 @@
               <div class="academic-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
                   <div class="academic-icon"><i class="fas fa-school"></i></div>
                   <h4>Higher Secondary</h4>
-                  <p>90% (CBSE, 2022)</p>
+                  <p>80% (CBSE, 2022)</p>
               </div>
           </div>
 
@@ -358,7 +349,7 @@
               <div class="academic-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.9s">
                   <div class="academic-icon"><i class="fas fa-book"></i></div>
                   <h4>Senior Secondary</h4>
-                  <p>92% (CBSE, 2020)</p>
+                  <p>95.2% (CBSE, 2020)</p>
               </div>
           </div>
 
@@ -397,47 +388,43 @@
 <!-- ***** Research Papers Section ***** -->
 <section id="research" class="research section">
   <div class="container">
-    <h2 class="text-center wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">Research Papers (Under Work)</h2>
+    <h2 class="text-center wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">Research Papers</h2>
     <p class="text-center mb-5 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
         Below are the research papers that I am currently working on.
     </p>
 
     <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="research-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+          <h4>Multi-Modal Meta Learner (M3L): A Unified, Scalable Architecture for State-of-the-Art Image Processing</h4>
+          <p><strong>Abstract:</strong>A state-of-the-art image processing model that unifies several advanced deep learning techniques into a single architecture. It integrates Sparse CNN, Vision Transformers, Graph Neural Networks, along with Diffusion Models, Neural Architecture Search, and Masked Autoencoders for self-supervised representation learning.</p>
+          <div class="research-links">
+            <a href="#" class="btn btn-outline-dark btn-sm" target="_blank">Work in Progress</a>
+           </div>
+        </div>
+      </div>
       <!-- Research Paper 1 -->
       <div class="col-lg-4 col-md-6">
         <div class="research-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-          <h4>Research Paper Title 1</h4>
-          <p><strong>Research Area:</strong> AI, Machine Learning</p>
-          <p><strong>Abstract:</strong> This paper discusses the advancements in machine learning algorithms, focusing on new architectures in deep learning.</p>
+          <h4>A Lightweight Deep Learning Framework for Detecting Potato Disease Using the Grasshopper Optimization Algorithm</h4>
+          <p><strong>Abstract:</strong>This study focused on artificial intelligence applied in potato disease detection,through a lightweight deep learning framework. The suggested model uses an integration of MobileNetV2 with Grasshopper Optimization Algorithm,for five potato diseases for classification.</p>
           <div class="research-links">
-            <a href="#" class="btn btn-outline-dark btn-sm" target="_blank">Work in Progress</a>
-            <a href="https://github.com/your-research-repo" class="btn btn-outline-dark btn-sm" target="_blank">GitHub Repo</a>
+            <a href="#" class="btn btn-outline-dark btn-sm" target="_blank">Work in Progress</a>  
           </div>
         </div>
       </div>
 
       <!-- Research Paper 2 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="research-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
-          <h4>Research Paper Title 2</h4>
-          <p><strong>Research Area:</strong> Deep Learning</p>
-          <p><strong>Abstract:</strong> An exploration of new techniques in deep neural networks for improved image recognition and classification.</p>
-          <div class="research-links">
-            <a href="#" class="btn btn-outline-dark btn-sm" target="_blank">Work in Progress</a>
-            <a href="https://github.com/your-research-repo" class="btn btn-outline-dark btn-sm" target="_blank">GitHub Repo</a>
-          </div>
-        </div>
-      </div>
+     
 
       <!-- Research Paper 3 -->
       <div class="col-lg-4 col-md-6">
         <div class="research-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
-          <h4>Research Paper Title 3</h4>
-          <p><strong>Research Area:</strong> Natural Language Processing</p>
-          <p><strong>Abstract:</strong> This paper investigates novel approaches to enhance text understanding using transformers and attention mechanisms.</p>
+          <h4>Deep Learning-Based Brain Tumor Identification</h4>
+          
+          <p><strong>Abstract:</strong> This research paper mainly focuses on using deep learning techniques, specifically convolutional neural networks (CNNs), to identify brain tumors from magnetic resonance imaging (MRI) scans. The chosen dataset contains scans of brain tumors consisting of 4 classes.</p>
           <div class="research-links">
             <a href="#" class="btn btn-outline-dark btn-sm" target="_blank">Work in Progress</a>
-            <a href="https://github.com/your-research-repo" class="btn btn-outline-dark btn-sm" target="_blank">GitHub Repo</a>
           </div>
         </div>
       </div>
@@ -558,6 +545,22 @@
           </div>
         </div>
       </div>
+      <div class="col-lg-4 col-md-6 mb-4 project-item">
+        <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+            <!-- Replace with your LoRA model image -->
+            <img src="{{ url_for('static', filename='images/829342611589419847.png') }}" alt="LoRA Model" class="project-image img-fluid">
+            <div class="project-overlay">
+                <h4>Fine-Tuned LoRA Model</h4>
+                <p>This custom LoRA model has been fine-tuned with my own face, and trained on Flux models as the base. It now has the ability to generate realistic, high-quality images of various types. From generating lifelike portraits to creative designs, this model reflects the power of generative AI and deep learning.</p>
+                <div class="tech-stack">
+                    <span class="badge">LoRA</span>
+                    <span class="badge">Generative AI</span>
+                    <span class="badge">Flux Models</span>
+                </div>
+                <!-- No GitHub link here -->
+            </div>
+        </div>
+    </div>
       <!-- Project 2 -->
       <div class="col-lg-4 col-md-6 mb-4 project-item">
         <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
@@ -656,6 +659,23 @@
             </div>
           </div>
         </div>
+        <!-- Project 2 Slide -->
+        <div class="slide" style="flex: 0 0 320px; margin: 0 10px;">
+          <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+            <img src="{{ url_for('static', filename='images/829342611589419847.png') }}" alt="lora_model" class="project-image img-fluid">
+            <div class="project-overlay">
+              <h4>Fine-Tuned LoRA Model</h4>
+              <p>This custom LoRA model has been fine-tuned with my own face, and trained on Flux models as the base. It now has the ability to generate realistic, high-quality images of various types. From generating lifelike portraits to creative designs, this model reflects the power of generative AI and deep learning.</p>
+              <div class="tech-stack">
+                  <span class="badge">LoRA</span>
+                  <span class="badge">Generative AI</span>
+                  <span class="badge">Flux Models</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+    
         <!-- Project 2 Slide -->
         <div class="slide" style="flex: 0 0 320px; margin: 0 10px;">
           <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
@@ -861,231 +881,251 @@
   <script src="{{ url_for('static', filename='js/animated-name.js') }}"></script>
 
   <!-- NEW SPLASH ANIMATION SCRIPT -->
-  <script>
-      // Toggle chat window visibility
-      document.getElementById("chat-toggle").addEventListener("click", function() {
-      document.getElementById("chat-window").classList.toggle("show");
-    });
-    // Close chat window
-    document.getElementById("close-chat").addEventListener("click", function() {
-      document.getElementById("chat-window").classList.remove("show");
-    });
-    // Handle sending message
-    document.getElementById("send-btn").addEventListener("click", async function() {
-      var userInput = document.getElementById("user-input").value;
-      if (userInput.trim() !== "") {
-        addMessage(userInput, "user");
-        document.getElementById("user-input").value = "";
-        addMessage("Thinking...", "ai");
-        try {
-          const response = await fetch('/ask', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ question: userInput })
-          });
-          const data = await response.json();
-          if (data.response) {
-            updateAIResponse(data.response);
-          } else {
-            updateAIResponse("Sorry, I couldn't understand that.");
-          }
-        } catch (error) {
-          updateAIResponse("Sorry, I'm having trouble connecting to the server.");
-          console.error("Error:", error);
+  <script>  
+  // Track used images
+  let usedImages = [];
+
+  // Toggle chat window visibility
+  document.getElementById("chat-toggle").addEventListener("click", function() {
+    document.getElementById("chat-window").classList.toggle("show");
+  });
+
+  // Close chat window
+  document.getElementById("close-chat").addEventListener("click", function() {
+    document.getElementById("chat-window").classList.remove("show");
+  });
+
+  // Handle sending message
+  document.getElementById("send-btn").addEventListener("click", async function() {
+    var userInput = document.getElementById("user-input").value;
+    if (userInput.trim() !== "") {
+      addMessage(userInput, "user");
+      document.getElementById("user-input").value = "";
+      addMessage("Thinking...", "ai");
+      try {
+        const response = await fetch('/ask', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ question: userInput })
+        });
+        const data = await response.json();
+        if (data.response) {
+          updateAIResponse(data.response);
+        } else {
+          updateAIResponse("Sorry, I couldn't understand that.");
         }
+      } catch (error) {
+        updateAIResponse("Sorry, I'm having trouble connecting to the server.");
+        console.error("Error:", error);
       }
-    });
-
-    // Add message to the chat
-    function addMessage(message, sender) {
-      var chatBody = document.getElementById("chat-body");
-      var messageElement = document.createElement("div");
-      messageElement.classList.add("message", sender);
-      if (sender === "user") {
-        messageElement.innerHTML = `
-          <div class="message-content">${escapeHtml(message)}</div>
-          <img src="{{ url_for('static', filename='images/person.svg') }}" alt="User Avatar" class="avatar">
-        `;
-      } else if (sender === "ai") {
-        messageElement.innerHTML = `
-          <img src="{{ url_for('static', filename='images/ai.svg') }}" alt="AI Avatar" class="avatar">
-          <div class="message-content">${escapeHtml(message)}</div>
-        `;
-      }
-      chatBody.appendChild(messageElement);
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }
-
-    // Update the last AI message with the response
-    function updateAIResponse(message) {
-      var chatBody = document.getElementById("chat-body");
-      var aiMessageElement = chatBody.querySelector(".message.ai:last-child");
-      if (aiMessageElement) {
-        aiMessageElement.querySelector(".message-content").textContent = message;
-      }
-    }
-
-    // Escape HTML to prevent XSS
-    function escapeHtml(text) {
-      var map = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#039;'
-      };
-      return text.replace(/[&<>"']/g, function(m) { return map[m]; });
-    }
-
-    // Handle "Enter" key for sending messages
-    document.getElementById("user-input").addEventListener("keypress", function(e) {
-      if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault();
-        document.getElementById("send-btn").click();
-      }
-    });
-
-    // Back-to-Top Button functionality
-    var backToTopBtn = document.getElementById("backToTopBtn");
-    window.onscroll = function() { scrollFunction(); };
-    function scrollFunction() {
-      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        backToTopBtn.style.display = "block";
-      } else {
-        backToTopBtn.style.display = "none";
-      }
-    }
-    document.addEventListener("DOMContentLoaded", function () {
-    if (window.innerWidth < 992) {
-      const sliderWrapper = document.querySelector('.slider-wrapper');
-      const slides = document.querySelectorAll('.slide');
-      const prevBtn = document.getElementById('prev');
-      const nextBtn = document.getElementById('next');
-      let currentSlide = 0;
-      const totalSlides = slides.length;
-      // Each slide occupies 320px + 20px margin (10px on each side)
-      const slideDistance = 320 + 20;
-      
-      function moveSlider() {
-        sliderWrapper.style.transform = `translateX(-${currentSlide * slideDistance}px)`;
-      }
-      
-      nextBtn.addEventListener('click', function () {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        moveSlider();
-      });
-      
-      prevBtn.addEventListener('click', function () {
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        moveSlider();
-      });
-      
-      // Auto-slide every 3 seconds
-      setInterval(function () {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        moveSlider();
-      }, 3000);
-      
-      moveSlider();
     }
   });
-    // Generated Images Array – update these URLs as needed
-    const generatedImages = [
-      'static/images/me-pics/829060827374972277.png',
-      'static/images/me-pics/829063434420179672.png',
-      'static/images/me-pics/829066921933721961.png',
-      'static/images/me-pics/829062682800884113.png',
-      'static/images/me-pics/829071186836091263.png',
-      'static/images/me-pics/829063434420179672.png',
-      'static/images/me-pics/829060943339091788.png',
-      'static/images/me-pics/829059805172734894.png',
-      'static/images/me-pics/829072604175351163.png'
-    ];
 
-    let circleImages = []; // To store references to the circle images
-    const circleContainer = document.getElementById('circleContainer');
-
-    // Create the rotating circle of images dynamically with proper spacing.
-    function createCircleImages() {
-      circleContainer.innerHTML = '';
-      circleImages = [];
-      const numImages = 8; // Number of images around the circle
-
-      // Determine effective radius: container radius - inner alert radius - fixed gap (20px)
-      const containerWidth = circleContainer.clientWidth;
-      const containerRadius = containerWidth / 2;
-      const innerAlertElem = document.querySelector('.inner-alert');
-      const innerAlertRadius = innerAlertElem.clientWidth / 2;
-      const gap = 20;
-      const effectiveRadius = containerRadius - innerAlertRadius - gap;
-
-      // Get the computed circle image size from the custom property
-      const computedSize = getComputedStyle(document.documentElement).getPropertyValue('--circle-img-size').trim();
-      let circleImgSize = parseFloat(computedSize);
-      if (isNaN(circleImgSize)) {
-        circleImgSize = 90;
-      }
-      const offset = circleImgSize / 2; // Half the size for centering
-
-      for (let i = 0; i < numImages; i++) {
-        const img = document.createElement('img');
-        img.src = generatedImages[Math.floor(Math.random() * generatedImages.length)];
-        img.classList.add('circle-image');
-        const angle = (360 / numImages) * i;
-        const radian = angle * (Math.PI / 180);
-        const x = effectiveRadius * Math.cos(radian);
-        const y = effectiveRadius * Math.sin(radian);
-        img.style.left = `calc(50% + ${x}px - ${offset}px)`;
-        img.style.top = `calc(50% + ${y}px - ${offset}px)`;
-        circleContainer.appendChild(img);
-        circleImages.push(img);
-      }
+  // Add message to the chat
+  function addMessage(message, sender) {
+    var chatBody = document.getElementById("chat-body");
+    var messageElement = document.createElement("div");
+    messageElement.classList.add("message", sender);
+    if (sender === "user") {
+      messageElement.innerHTML = `
+        <div class="message-content">${escapeHtml(message)}</div>
+        <img src="{{ url_for('static', filename='images/person.svg') }}" alt="User Avatar" class="avatar">
+      `;
+    } else if (sender === "ai") {
+      messageElement.innerHTML = `
+        <img src="{{ url_for('static', filename='images/ai.svg') }}" alt="AI Avatar" class="avatar">
+        <div class="message-content">${escapeHtml(message)}</div>
+      `;
     }
+    chatBody.appendChild(messageElement);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
 
-    // Animate two random images from the circle to exit toward target elements
-    function animateExitToTargets() {
-      let indices = [];
-      while (indices.length < 2) {
-        const rand = Math.floor(Math.random() * circleImages.length);
-        if (!indices.includes(rand)) indices.push(rand);
-      }
-      const [firstIndex, secondIndex] = indices;
-      const img1 = circleImages[firstIndex];
-      const img2 = circleImages[secondIndex];
+  // Update the last AI message with the response
+  function updateAIResponse(message) {
+    var chatBody = document.getElementById("chat-body");
+    var aiMessageElement = chatBody.querySelector(".message.ai:last-child");
+    if (aiMessageElement) {
+      aiMessageElement.querySelector(".message-content").textContent = message;
+    }
+  }
 
-      const mainTarget = document.getElementById('mainProfilePic').getBoundingClientRect();
-      const aboutTarget = document.getElementById('aboutProfilePic').getBoundingClientRect();
+  // Escape HTML to prevent XSS
+  function escapeHtml(text) {
+    var map = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+  }
 
-      const img1Rect = img1.getBoundingClientRect();
-      const img2Rect = img2.getBoundingClientRect();
+  // Handle "Enter" key for sending messages
+  document.getElementById("user-input").addEventListener("keypress", function(e) {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      document.getElementById("send-btn").click();
+    }
+  });
 
-      const translateX1 = (mainTarget.left + mainTarget.width / 2) - (img1Rect.left + img1Rect.width / 2);
-      const translateY1 = (mainTarget.top + mainTarget.height / 2) - (img1Rect.top + img1Rect.height / 2);
-      const translateX2 = (aboutTarget.left + aboutTarget.width / 2) - (img2Rect.left + img2Rect.width / 2);
-      const translateY2 = (aboutTarget.top + aboutTarget.height / 2) - (img2Rect.top + img2Rect.height / 2);
+  // Back-to-Top Button functionality
+  var backToTopBtn = document.getElementById("backToTopBtn");
+  window.onscroll = function() { scrollFunction(); };
+  function scrollFunction() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+      backToTopBtn.style.display = "block";
+    } else {
+      backToTopBtn.style.display = "none";
+    }
+  }
 
-      img1.style.transition = 'transform 1.5s ease';
-      img2.style.transition = 'transform 1.5s ease';
-      img1.style.transform = `translate(${translateX1}px, ${translateY1}px) scale(1.2)`;
-      img2.style.transform = `translate(${translateX2}px, ${translateY2}px) scale(1.2)`;
+  // Generated Images Array – update these URLs as needed
+  const generatedImages = [
+    'static/images/me-pics/a2.png',
+    'static/images/me-pics/a3.png',
+    'static/images/me-pics/a4.png',
+    'static/images/me-pics/a5.png',
+    'static/images/me-pics/a6.png',
+    'static/images/me-pics/a8.png',
+    'static/images/me-pics/a9.png',
+    'static/images/me-pics/a10.png',
+    'static/images/me-pics/a11.png',
+    
+  ];
 
+  let circleImages = []; // To store references to the circle images
+  const circleContainer = document.getElementById('circleContainer');
+
+  // Create the rotating circle of images dynamically with proper spacing.
+  function createCircleImages() {
+    circleContainer.innerHTML = '';
+    circleImages = [];
+    const numImages = 8; // Number of images around the circle
+
+    // Track used images
+    let usedImages = [];
+
+    // Determine effective radius: container radius - inner alert radius - fixed gap (20px)
+    const containerWidth = circleContainer.clientWidth;
+    const containerRadius = containerWidth / 2;
+    const innerAlertElem = document.querySelector('.inner-alert');
+    const innerAlertRadius = innerAlertElem.clientWidth / 2;
+    const gap = 20;
+    const effectiveRadius = containerRadius - innerAlertRadius - gap;
+
+    // Get the computed circle image size from the custom property
+    const computedSize = getComputedStyle(document.documentElement).getPropertyValue('--circle-img-size').trim();
+    let circleImgSize = parseFloat(computedSize);
+    if (isNaN(circleImgSize)) {
+      circleImgSize = 90;
+    }
+    const offset = circleImgSize / 2; // Half the size for centering
+
+    for (let i = 0; i < numImages; i++) {
+      const img = document.createElement('img');
+
+      // Pick a random image that hasn't been used yet
+      let randomImageIndex;
+      do {
+        randomImageIndex = Math.floor(Math.random() * generatedImages.length);
+      } while (usedImages.includes(randomImageIndex));
+
+      img.src = generatedImages[randomImageIndex];
+      usedImages.push(randomImageIndex);  // Track the image as used
+
+      img.classList.add('circle-image');
+      const angle = (360 / numImages) * i;
+      const radian = angle * (Math.PI / 180);
+      const x = effectiveRadius * Math.cos(radian);
+      const y = effectiveRadius * Math.sin(radian);
+      img.style.left = `calc(50% + ${x}px - ${offset}px)`;
+      img.style.top = `calc(50% + ${y}px - ${offset}px)`;
+      circleContainer.appendChild(img);
+      circleImages.push(img);
+    }
+  }
+
+  // Animate two random images from the circle to exit toward target elements
+  function animateExitToTargets() {
+    let indices = [];
+    while (indices.length < 2) {
+      const rand = Math.floor(Math.random() * circleImages.length);
+      if (!indices.includes(rand)) indices.push(rand);
+    }
+    const [firstIndex, secondIndex] = indices;
+    const img1 = circleImages[firstIndex];
+    const img2 = circleImages[secondIndex];
+
+    const mainTarget = document.getElementById('mainProfilePic').getBoundingClientRect();
+    const aboutTarget = document.getElementById('aboutProfilePic').getBoundingClientRect();
+
+    const img1Rect = img1.getBoundingClientRect();
+    const img2Rect = img2.getBoundingClientRect();
+
+    const translateX1 = (mainTarget.left + mainTarget.width / 2) - (img1Rect.left + img1Rect.width / 2);
+    const translateY1 = (mainTarget.top + mainTarget.height / 2) - (img1Rect.top + img1Rect.height / 2);
+    const translateX2 = (aboutTarget.left + aboutTarget.width / 2) - (img2Rect.left + img2Rect.width / 2);
+    const translateY2 = (aboutTarget.top + aboutTarget.height / 2) - (img2Rect.top + img2Rect.height / 2);
+
+    img1.style.transition = 'transform 1.5s ease';
+    img2.style.transition = 'transform 1.5s ease';
+    img1.style.transform = `translate(${translateX1}px, ${translateY1}px) scale(1.2)`;
+    img2.style.transform = `translate(${translateX2}px, ${translateY2}px) scale(1.2)`;
+
+    setTimeout(() => {
+      document.getElementById('mainProfilePic').src = img1.src;
+      document.getElementById('aboutProfilePic').src = img2.src;
+      const splash = document.getElementById('splash');
+      splash.style.transition = 'opacity 1s ease';
+      splash.style.opacity = 0;
       setTimeout(() => {
-        document.getElementById('mainProfilePic').src = img1.src;
-        document.getElementById('aboutProfilePic').src = img2.src;
-        const splash = document.getElementById('splash');
-        splash.style.transition = 'opacity 1s ease';
-        splash.style.opacity = 0;
-        setTimeout(() => {
-          splash.style.display = 'none';
-        }, 1000);
-      }, 1500);
-    }
+        splash.style.display = 'none';
+      }, 1000);
+    }, 1500);
+  }
 
-    // Initialize splash animation on page load
-    window.addEventListener('load', () => {
-      createCircleImages();
-      setTimeout(animateExitToTargets, 5000);
+  // Initialize splash animation on page load
+  window.addEventListener('load', () => {
+    createCircleImages();
+    setTimeout(animateExitToTargets, 5000);
+  });
+  document.addEventListener("DOMContentLoaded", function () {
+  if (window.innerWidth < 992) {
+    const sliderWrapper = document.querySelector('.slider-wrapper');
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+    // Each slide occupies 320px + 20px margin (10px on each side)
+    const slideDistance = 320 + 20;
+    
+    function moveSlider() {
+      sliderWrapper.style.transform = `translateX(-${currentSlide * slideDistance}px)`;
+    }
+    
+    nextBtn.addEventListener('click', function () {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      moveSlider();
     });
+    
+    prevBtn.addEventListener('click', function () {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      moveSlider();
+    });
+    
+    // Auto-slide every 3 seconds
+    setInterval(function () {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      moveSlider();
+    }, 3000);
+    
+    moveSlider();
+  }
+});
+</script>
   </script>
 </body>
 </html>
