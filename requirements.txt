@@ -9,3 +9,7 @@ langchain-openai==0.2.14
 langchain-pinecone==0.2.0
 langchain-text-splitters==0.3.4
 gunicorn==20.1.0
+
+# Additional dependencies used in the project
+openai==1.11.1                # Required for OpenAI API calls
+faiss-cpu==1.7.4              # FAISS for vector search (CPU version)
