@@ -76,22 +76,48 @@ document.getElementById("user-input").addEventListener("keypress", function (e) 
         e.preventDefault();
         document.getElementById("send-btn").click();
     }
-    document.addEventListener("DOMContentLoaded", function () {
-        const nameContainer = document.getElementById("animated-name");
-        const letters = Array.from(nameContainer.children);
-    
-        letters.forEach((letter, index) => {
-            letter.style.animationDelay = `${index * 0.2}s`; // Adjust delay dynamically
-        });
-    });
 });
-// Typing Effect for Name
+
+// Set animation delay for each letter in the animated name
 document.addEventListener("DOMContentLoaded", function () {
-    let typed = new Typed("#typed-name", {
-      strings: ["Akshat Gupta", "AI Engineer", "Deep Learning Enthusiast"],
-      typeSpeed: 100,
-      backSpeed: 60,
-      backDelay: 2000,
-      loop: true,
-    });
-  });
+    const nameContainer = document.getElementById("animated-name");
+    if (nameContainer) {
+        const letters = Array.from(nameContainer.children);
+        letters.forEach((letter, index) => {
+            letter.style.animationDelay = `${index * 0.2}s`;
+        });
+    }
+});
+
+// Typing effect for name using Typed.js
+document.addEventListener("DOMContentLoaded", function () {
+    if (typeof Typed !== "undefined") {
+        let typed = new Typed("#typed-name", {
+            strings: ["Akshat Gupta", "AI Engineer", "Deep Learning Enthusiast"],
+            typeSpeed: 100,
+            backSpeed: 60,
+            backDelay: 2000,
+            loop: true,
+        });
+    }
+});
+
+// --- Projects Slider Initialization ---
+// This code initializes the Slick slider for the mobile projects container.
+// Ensure that jQuery and Slick are loaded before this code runs.
+$(document).ready(function(){
+    // Check if the window width is less than 992px and if the mobile projects container exists.
+    if (window.innerWidth < 992) {
+        if ($('#projects-slider').length) {
+            $('#projects-slider').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 3000,
+                dots: true,
+                arrows: false,
+                infinite: true
+            });
+        }
+    }
+});
