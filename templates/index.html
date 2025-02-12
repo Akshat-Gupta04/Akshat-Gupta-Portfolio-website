@@ -1,47 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Akshat Gupta - AI Portfolio</title>
-  <meta name="description" content="Akshat Gupta AI Portfolio">
-  <meta name="author" content="Akshat Gupta">
+  <meta name="description" content="Akshat Gupta AI Portfolio" />
+  <meta name="author" content="Akshat Gupta" />
 
   <!-- Preconnect to Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
 
   <!-- Bootstrap CSS -->
-  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
 
   <!-- Additional CSS Files -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-digimedia-v1.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/animated.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-digimedia-v1.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/animated.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.css') }}" />
 
-  <!-- Custom Inline Styles for SPLASH ANIMATION and Responsiveness -->
+  <!-- Custom Inline Styles for SPLASH ANIMATION, Notification Banner, and Responsive Navbar -->
   <style>
-     :root {
+    :root {
       --circle-img-size: calc(3vw + 70px);
     }
-    
-    /* Floating Chat Button remains as usual (unchanged) */
+
+    /* Floating Chat Button remains unchanged */
     .floating-chat-btn {
       position: fixed;
       bottom: 60px;
       right: 30px;
       z-index: 1060;
     }
-    
-    /* -------------------------------
-       NOTIFICATION BANNER (non-fixed)
-       ------------------------------- */
     .notification-banner {
       width: 100%;
       background: linear-gradient(90deg, #1f1f1f, #3c3c3c);
@@ -72,6 +71,7 @@
       0%   { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
     }
+    
     
     /* --------------------------------------------------------------------
        SPLASH ANIMATION OVERLAY
@@ -145,32 +145,72 @@
     --------------------------------------------------------------------- */
     #mainProfilePic,
     #aboutProfilePic {
-      width: 360px;
-      height: 100%;
+      width: 100%;
+      height: 360;
       object-fit: cover;
       border: none;
       box-shadow: none;
       display: block;
       margin: 0 auto;
     }
+    
+    /* --------------------------------------------------------------------
+       (Optional) Notification Banner - if you want one at the top of your content
+    --------------------------------------------------------------------- */
+    .notification-banner {
+      width: 100%;
+      background: linear-gradient(90deg, #1f1f1f, #3c3c3c);
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      border-bottom: 2px solid #444;
+    }
+    .notification-text {
+      display: inline-block;
+      color: #fff;
+      font-size: 1.2rem;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 500;
+      background: linear-gradient(45deg, #f3ec78, #af4261);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+      animation: marquee 15s linear infinite;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
   </style>
 </head>
-
 <body>
+  <!-- (Optional) Notification Banner (if you want it visible only above the main banner) -->
+  <!-- Uncomment the block below if needed -->
+  <!--
+  <div class="notification-banner">
+    <div class="notification-text">
+      None of image is real, all are generated using Custom LORA model &bull;
+    </div>
+  </div>
+  -->
+
   <!-- SPLASH ANIMATION OVERLAY -->
   <div id="splash">
     <div class="circle-container" id="circleContainer">
       <!-- Rotating circle images will be injected here by JavaScript -->
     </div>
-    <!-- Inner alert circle with dynamic alert text -->
     <div class="inner-alert">
-    All images are generated using my Custom LoRA model
+      All images are generated using my Custom LoRA model
     </div>
   </div>
 
   <!-- ***** Header / Navbar ***** -->
   <header>
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <!-- Use navbar-dark to ensure proper toggler appearance on dark backgrounds -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#top">
           <span class="logo-text">Akshat Gupta</span>
@@ -189,7 +229,9 @@
             <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
             <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
             <li class="nav-item">
-              <a class="nav-link download-resume" href="{{ url_for('static', filename='images/resume.pdf') }}" download>Download Resume</a>
+              <a class="nav-link download-resume" href="{{ url_for('static', filename='images/resume.pdf') }}" download>
+                Download Resume
+              </a>
             </li>
           </ul>
         </div>
@@ -201,6 +243,7 @@
       None of image is real, all are generated using Custom LORA model &bull;
     </div>
   </div>
+
 
   <!-- ***** Main Banner Area ***** -->
   <div id="top" class="main-banner">
@@ -231,7 +274,6 @@
         </div>
         <!-- Image Section (Right Side) -->
         <div class="col-lg-6">
-          <!-- The main banner profile image is set by the splash animation -->
           <img id="mainProfilePic" src="" alt="Profile Image" class="banner-image">
         </div>
       </div>
@@ -253,7 +295,6 @@
       <div class="about-card-wrapper wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.7s">
         <div class="about-card">
           <div class="about-image">
-            <!-- The about section profile image is set by the splash animation -->
             <img id="aboutProfilePic" src="" alt="Profile Image" class="img-fluid">
           </div>
           <div class="about-info">
@@ -268,6 +309,7 @@
     </div>
   </section>
   <!-- ***** End About Section ***** -->
+
 
   <!-- ***** Academic Highlights Section ***** -->
 <!-- Academic Highlights Section -->
@@ -809,9 +851,7 @@
     </div>
   </footer>
 
-
-  <!-- Scripts -->
-
+  <!-- Scripts: Load each only once and in the proper order -->
   <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
   <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/owl-carousel.js') }}"></script>
@@ -822,8 +862,8 @@
 
   <!-- NEW SPLASH ANIMATION SCRIPT -->
   <script>
-     // Toggle chat window visibility
-     document.getElementById("chat-toggle").addEventListener("click", function() {
+      // Toggle chat window visibility
+      document.getElementById("chat-toggle").addEventListener("click", function() {
       document.getElementById("chat-window").classList.toggle("show");
     });
     // Close chat window
@@ -949,50 +989,44 @@
       moveSlider();
     }
   });
-    /**********************************************************************
-     * Generated Images Array
-     * Replace these placeholder URLs with your actual generated image URLs.
-     **********************************************************************/
-     const generatedImages = [
-'static/images/me-pics/829056467983332525 Background Removed.png',
-'static/images/me-pics/829060827374972277.png',
-'static/images/me-pics/829063434420179672.png',
-'static/images/me-pics/829066921933721961.png',
-'static/images/me-pics/829062682800884113.png',
-'static/images/me-pics/829071186836091263.png',
-'static/images/me-pics/829063434420179672.png',
-'static/images/me-pics/829060943339091788.png',
-'static/images/me-pics/829059805172734894.png',
-'static/images/me-pics/829072604175351163.png'
-];
+    // Generated Images Array – update these URLs as needed
+    const generatedImages = [
+      'static/images/me-pics/829060827374972277.png',
+      'static/images/me-pics/829063434420179672.png',
+      'static/images/me-pics/829066921933721961.png',
+      'static/images/me-pics/829062682800884113.png',
+      'static/images/me-pics/829071186836091263.png',
+      'static/images/me-pics/829063434420179672.png',
+      'static/images/me-pics/829060943339091788.png',
+      'static/images/me-pics/829059805172734894.png',
+      'static/images/me-pics/829072604175351163.png'
+    ];
 
-
-    let circleImages = []; // Array to store references to the circle images
+    let circleImages = []; // To store references to the circle images
     const circleContainer = document.getElementById('circleContainer');
 
-    // Create the rotating circle of images dynamically with proper spacing
+    // Create the rotating circle of images dynamically with proper spacing.
     function createCircleImages() {
       circleContainer.innerHTML = '';
       circleImages = [];
-      const numImages = 8; // Number of images arranged in the circle
-      
-      // Determine the effective radius from the container minus the inner alert and a fixed gap
+      const numImages = 8; // Number of images around the circle
+
+      // Determine effective radius: container radius - inner alert radius - fixed gap (20px)
       const containerWidth = circleContainer.clientWidth;
       const containerRadius = containerWidth / 2;
       const innerAlertElem = document.querySelector('.inner-alert');
       const innerAlertRadius = innerAlertElem.clientWidth / 2;
-      const gap = 20; // fixed gap between inner alert and rotating images
+      const gap = 20;
       const effectiveRadius = containerRadius - innerAlertRadius - gap;
-      
-      // Get the computed size for circle images from the custom property
+
+      // Get the computed circle image size from the custom property
       const computedSize = getComputedStyle(document.documentElement).getPropertyValue('--circle-img-size').trim();
       let circleImgSize = parseFloat(computedSize);
       if (isNaN(circleImgSize)) {
         circleImgSize = 90;
       }
-      const offset = circleImgSize / 2; // half the size for centering
-      
-      // For each image, calculate its position
+      const offset = circleImgSize / 2; // Half the size for centering
+
       for (let i = 0; i < numImages; i++) {
         const img = document.createElement('img');
         img.src = generatedImages[Math.floor(Math.random() * generatedImages.length)];
@@ -1053,14 +1087,5 @@
       setTimeout(animateExitToTargets, 5000);
     });
   </script>
-
-  <!-- Existing Scripts -->
-  <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/owl-carousel.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/animation.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/imagesloaded.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/animated-name.js') }}"></script>
 </body>
 </html>

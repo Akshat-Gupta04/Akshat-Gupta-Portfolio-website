@@ -1,172 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Akshat Gupta - AI Portfolio</title>
-  <meta name="description" content="Akshat Gupta AI Portfolio">
-  <meta name="author" content="Akshat Gupta">
+  <meta name="description" content="Akshat Gupta AI Portfolio" />
+  <meta name="author" content="Akshat Gupta" />
 
   <!-- Preconnect to Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
 
   <!-- Bootstrap CSS -->
-  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
 
   <!-- Additional CSS Files -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-digimedia-v1.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/animated.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-digimedia-v1.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/animated.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.css') }}" />
 
-  <!-- Custom Inline Styles for Extra Responsiveness -->
+  <!-- Custom Inline Styles for SPLASH ANIMATION, Notification Banner, and Responsive Navbar -->
   <style>
-    /* Adjust the floating chat window on smaller screens */
-    @media (max-width: 768px) {
-      .floating-chat-window {
-        width: 90%;
-        right: 5%;
-      }
+    :root {
+      --circle-img-size: calc(3vw + 70px);
+    }
+
+    /* Floating Chat Button remains unchanged */
+    .floating-chat-btn {
+      position: fixed;
+      bottom: 60px;
+      right: 30px;
+      z-index: 1060;
+    }
+    .notification-banner {
+      width: 100%;
+      background: linear-gradient(90deg, #1f1f1f, #3c3c3c);
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      border-bottom: 2px solid #444;
+      /* Positioned in normal document flow so it appears only above the main banner */
+    }
+    .notification-text {
+      display: inline-block;
+      color: #fff;
+      font-size: 1.2rem;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 500;
+      /* Advanced gradient text effect */
+      background: linear-gradient(45deg, #f3ec78, #af4261);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+      /* Endless scrolling animation */
+      animation: marquee 15s linear infinite;
+    }
+    @keyframes marquee {
+      0%   { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
     }
     
+    
+    /* --------------------------------------------------------------------
+       SPLASH ANIMATION OVERLAY
+       A modern, semi-transparent gradient background with a rotating circle of images.
+    --------------------------------------------------------------------- */
+    #splash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(135deg, rgba(102,126,234,0.7), rgba(118,75,162,0.7));
+      backdrop-filter: blur(5px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .circle-container {
+      position: relative;
+      width: calc(30vw + 200px);
+      height: calc(30vw + 200px);
+      border-radius: 50%;
+      animation: rotateCircle 5s linear forwards;
+    }
+    @keyframes rotateCircle {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .circle-image {
+      position: absolute;
+      width: var(--circle-img-size);
+      height: var(--circle-img-size);
+      border-radius: 50%;
+      border: none;
+      box-shadow: none;
+      transition: transform 1s ease, top 1s ease, left 1s ease;
+    }
+    /* --------------------------------------------------------------------
+       INNER ALERT CIRCLE
+       A smaller circular element in the center with dynamic alert text.
+    --------------------------------------------------------------------- */
+    .inner-alert {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: calc((30vw + 200px) * 0.25);
+      height: calc((30vw + 200px) * 0.25);
+      border-radius: 50%;
+      background-color: #ff4444;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(0.8rem, 2vw, 1.2rem);
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      padding: 5px;
+      word-break: break-word;
+      line-height: 1.2;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+    }
+    
+    /* --------------------------------------------------------------------
+       PROFILE IMAGE STYLES for Main Banner & About Section
+       (Fixed dimensions without rounding)
+    --------------------------------------------------------------------- */
+    #mainProfilePic,
+    #aboutProfilePic {
+      width: 100%;
+      height: 360;
+      object-fit: cover;
+      border: none;
+      box-shadow: none;
+      display: block;
+      margin: 0 auto;
+    }
+    
+    /* --------------------------------------------------------------------
+       (Optional) Notification Banner - if you want one at the top of your content
+    --------------------------------------------------------------------- */
+    .notification-banner {
+      width: 100%;
+      background: linear-gradient(90deg, #1f1f1f, #3c3c3c);
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      border-bottom: 2px solid #444;
+    }
+    .notification-text {
+      display: inline-block;
+      color: #fff;
+      font-size: 1.2rem;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 500;
+      background: linear-gradient(45deg, #f3ec78, #af4261);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+      animation: marquee 15s linear infinite;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
   </style>
 </head>
-
 <body>
+  <!-- (Optional) Notification Banner (if you want it visible only above the main banner) -->
+  <!-- Uncomment the block below if needed -->
+  <!--
+  <div class="notification-banner">
+    <div class="notification-text">
+      None of image is real, all are generated using Custom LORA model &bull;
+    </div>
+  </div>
+  -->
+
+  <!-- SPLASH ANIMATION OVERLAY -->
+  <div id="splash">
+    <div class="circle-container" id="circleContainer">
+      <!-- Rotating circle images will be injected here by JavaScript -->
+    </div>
+    <div class="inner-alert">
+      All images are generated using my Custom LoRA model
+    </div>
+  </div>
 
   <!-- ***** Header / Navbar ***** -->
   <header>
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <!-- Use navbar-dark to ensure proper toggler appearance on dark backgrounds -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#top">
           <span class="logo-text">Akshat Gupta</span>
         </a>
-    
-        <!-- Mobile Menu Toggle Button -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-    
-        <!-- Navbar Links -->
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#top">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#academics">Acadamic Highlights</a></li>
+            <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
+            <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+            <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
             <li class="nav-item">
-              <a class="nav-link" href="#top">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#academics">Acadamic Highlights</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#research">Research</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#skills">Skills</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#projects">Projects</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">Contact</a>
-            </li>
-            <!-- Download Resume Button -->
-            <li class="nav-item">
-              <a class="nav-link download-resume" href="{{ url_for('static', filename='images/resume.pdf') }}" download>Download Resume</a>
+              <a class="nav-link download-resume" href="{{ url_for('static', filename='images/resume.pdf') }}" download>
+                Download Resume
+              </a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
   </header>
+  <div class="notification-banner">
+    <div class="notification-text">
+      None of image is real, all are generated using Custom LORA model &bull;
+    </div>
+  </div>
 
 
-<!-- ***** Main Banner Area ***** -->
-<div id="top" class="main-banner">
-  <div class="container">
-    <div class="row align-items-center">
-      <!-- Text Section (Left Side) -->
-      <div class="col-lg-6">
-        <h6 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s" 
-            style="text-transform: uppercase; color: #ffffff; font-size: 22px; font-weight: 700; letter-spacing: 2px;">
-          Welcome to My Portfolio
-        </h6>
-        <h2>
-          <span style="color: #ffffff;">I'm</span> 
-          <span id="animated-name">
-            <span>Akshat Gupta</span>
-            <span>अक्षत गुप्ता</span>
-          </span>
+  <!-- ***** Main Banner Area ***** -->
+  <div id="top" class="main-banner">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Text Section (Left Side) -->
+        <div class="col-lg-6">
+          <h6 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s"
+              style="text-transform: uppercase; color: #ffffff; font-size: 22px; font-weight: 700; letter-spacing: 2px;">
+            Welcome to My Portfolio
+          </h6>
+          <h2>
+            <span style="color: #ffffff;">I'm</span>
+            <span id="animated-name">
+              <span>Akshat Gupta</span>
+              <span>अक्षत गुप्ता</span>
+            </span>
+          </h2>
+          <p class="wow fadeInLeft dark-text" data-wow-duration="1s" data-wow-delay="0.9s">
+            AI & ML Enthusiast | Innovator
+          </p>
+          <p class="wow fadeInLeft dark-text" data-wow-duration="1s" data-wow-delay="0.9s">
+            Explore my portfolio to see the latest projects where I applied AI to drive real-world impact and bring innovation to various domains.
+          </p>
+          <a href="#projects" class="btn btn-outline-light wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.4s">
+            View my work
+          </a>
+        </div>
+        <!-- Image Section (Right Side) -->
+        <div class="col-lg-6">
+          <img id="mainProfilePic" src="" alt="Profile Image" class="banner-image">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ***** End Main Banner ***** -->
+
+  <!-- ***** About Section ***** -->
+  <section id="about" class="about section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.3s">
+          About Me
         </h2>
-        <p class="wow fadeInLeft dark-text" data-wow-duration="1s" data-wow-delay="0.9s">
-          AI Engineer | ML Enthusiast | Innovator
+        <p class="section-subtitle wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.5s">
+          AI Engineer • Innovator • Lifelong Learner
         </p>
-        <p class="wow fadeInLeft dark-text" data-wow-duration="1s" data-wow-delay="0.9s">
-          Explore my portfolio to see the latest projects where I applied AI to drive real-world impact and bring innovation to various domains.
-        </p>
-        <a href="#projects" class="btn btn-outline-light wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.4s">View my work</a>
       </div>
-      
-      <!-- Image Section (Right Side) -->
-      <div class="col-lg-6">
-        <img src="static/images/image.png" alt="Profile Image" class="banner-image">
-      </div>
-
-    </div>
-  </div>
-</div>
-<!-- ***** End Main Banner ***** -->
-
-
- <!-- ***** About Section ***** -->
-<!-- ***** About Section ***** -->
-<section id="about" class="about section">
-  <div class="container">
-    <!-- Section Title -->
-    <div class="text-center mb-5">
-      <h2 class="section-title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.3s">
-        About Me
-      </h2>
-      <p class="section-subtitle wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.5s">
-        AI Engineer • Innovator • Lifelong Learner
-      </p>
-    </div>
-
-    <!-- Interactive About Card -->
-    <div class="about-card-wrapper wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.7s">
-      <div class="about-card">
-        <!-- Profile Image Column -->
-        <div class="about-image">
-          <img src="static/images/profile_pic.png" alt="Profile Image" class="img-fluid">
-        </div>
-        <!-- Text Content Column -->
-        <div class="about-info">
-          <h3>Welcome to my journey</h3>
-          <p>
-            I am a passionate AI Engineer dedicated to crafting innovative solutions that blend technology with creativity. My work focuses on developing advanced machine learning and deep learning models that solve real-world challenges.
-          </p>
-          <p>
-            When I'm not immersed in coding and research, I love exploring the latest trends in AI, experimenting with new projects, and finding inspiration in everyday life. My journey in AI is driven by curiosity and a commitment to continuous learning.
-          </p>
-          <p>
-            I'm currently pursuing my B.Tech in Computer Science &amp; Engineering at Bennett University, which has provided a strong technical foundation. However, my true passion lies in applying AI to create transformative, real-world applications.
-          </p>
-          <a href="#contact" class="btn about-cta">Let’s Connect</a>
+      <div class="about-card-wrapper wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.7s">
+        <div class="about-card">
+          <div class="about-image">
+            <img id="aboutProfilePic" src="" alt="Profile Image" class="img-fluid">
+          </div>
+          <div class="about-info">
+            <h3>Welcome to my journey</h3>
+            <p>
+              I’m a passionate AI Enthusiast focused on creating innovative machine learning and deep learning solutions for real-world challenges. When I’m not coding or researching, I explore the latest AI trends and experiment with new projects. I’m currently pursuing a B.Tech in Computer Science & Engineering at Bennett University, which has given me a strong technical foundation, but my true passion lies in applying AI to create transformative applications.
+            </p>
+            <a href="#contact" class="btn about-cta">Let’s Connect</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- ***** End About Section ***** -->
+  </section>
+  <!-- ***** End About Section ***** -->
+
+
   <!-- ***** Academic Highlights Section ***** -->
 <!-- Academic Highlights Section -->
 <section id="academics" class="academics section">
@@ -383,88 +527,217 @@
 </section>
   <!-- ***** End Skills Section ***** -->
 
-  <!-- ***** Projects Section ***** -->
-  <div id="projects" class="projects section">
-    <div class="container">
-      <h2 class="text-center wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">My Projects</h2>
-      <p class="text-center mb-5">Here are some of my featured projects that showcase my skills and expertise.</p>
-      <div class="row">
-        <!-- Project 1 -->
-        <div class="col-lg-4 col-md-6 mb-4">
-          <div class="project-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-            <div class="project-card">
-              <img src="{{ url_for('static', filename='images/Akshar.png') }}" alt="Project 1" class="project-image img-fluid">
-              <div class="project-overlay">
-                <h4>Akshar</h4>
-                <p>A chat app that translates text and audio messages in real time, built using Flutter.</p>
-                <div class="tech-stack">
-                  <span class="badge">Flutter</span>
-                  <span class="badge">Dart</span>
-                  <span class="badge">AI</span>
-                </div>
-                <a href="https://github.com/Akshat-Gupta04/AksharApp.git" class="btn btn-outline-light btn-sm">View on GitHub</a>
-              </div>
+<!-- ***** Projects Section ***** -->
+ 
+<div id="projects" class="projects section">
+  <div class="container">
+    <h2 class="text-center wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">
+      My Projects
+    </h2>
+    <p class="text-center mb-5">
+      Here are some of my featured projects that showcase my skills and expertise.
+    </p>
+
+    <!-- Desktop Grid Layout (Visible on large screens) -->
+    <div id="projects-grid" class="row d-none d-lg-flex">
+      <!-- Project 1 -->
+      <div class="col-lg-4 col-md-6 mb-4 project-item">
+        <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+          <img src="{{ url_for('static', filename='images/Akshar.png') }}" alt="Project 1" class="project-image img-fluid">
+          <div class="project-overlay">
+            <h4>Akshar</h4>
+            <p>A chat app that translates text and audio messages in real time, built using Flutter.</p>
+            <div class="tech-stack">
+              <span class="badge">Flutter</span>
+              <span class="badge">Dart</span>
+              <span class="badge">AI</span>
             </div>
+            <a href="https://github.com/Akshat-Gupta04/AksharApp.git" class="btn btn-outline-light btn-sm">
+              View on GitHub
+            </a>
           </div>
         </div>
-        <!-- Project 2 -->
-        <div class="col-lg-4 col-md-6 mb-4">
-          <div class="project-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
-            <div class="project-card">
-              <img src="{{ url_for('static', filename='images/project2.png') }}" alt="Project 2" class="project-image img-fluid">
-              <div class="project-overlay">
-                <h4>FaceCheck</h4>
-                <p>A facial recognition-based attendance system integrated with a SQL database.</p>
-                <div class="tech-stack">
-                  <span class="badge">Python</span>
-                  <span class="badge">OpenCV</span>
-                  <span class="badge">SQL</span>
-                </div>
-                <a href="https://github.com/Akshat-Gupta04/FaceCheck_complete.git" class="btn btn-outline-light btn-sm">View on GitHub</a>
-              </div>
+      </div>
+      <!-- Project 2 -->
+      <div class="col-lg-4 col-md-6 mb-4 project-item">
+        <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+          <img src="{{ url_for('static', filename='images/eye_detection.png') }}" alt="Project 2" class="project-image img-fluid">
+          <div class="project-overlay">
+            <h4>Eye Disease Detection</h4>
+            <p>Empowering precise eye disease detection through cutting-edge generative AI and deep learning on fundus images.</p>
+            <div class="tech-stack">
+              <span class="badge">Deep Learning</span>
+              <span class="badge">Generative AI</span>
+              <span class="badge">Python</span>
             </div>
+            <a href="https://github.com/Akshat-Gupta04/FaceCheck_complete.git" class="btn btn-outline-light btn-sm">
+              View on GitHub
+            </a>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 mb-4">
-          <div class="project-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-            <div class="project-card">
-              <img src="{{ url_for('static', filename='images/medical_chatbot.png') }}" alt="Project 1" class="project-image img-fluid">
-              <div class="project-overlay">
-                <h4>Medical ChatBot</h4>
-                <p>Medcal ChatBot is an context-aware medical assistant that leverages retrieval-augmented generation with a locally stored vector database (built from PDFs) to deliver dynamic, AI-powered medical advice through a modern, conversational interface</p>
-                <div class="tech-stack">
-                  <span class="badge">RAG</span>
-                  <span class="badge">Python</span>
-                  <span class="badge">LangChain</span>
-                  <span class="badge">Generative AI</span>
-                </div>
-                <a href="https://github.com/Akshat-Gupta04/Medical-ChatBOT" class="btn btn-outline-light btn-sm">View on GitHub</a>
-              </div>
+      </div>
+      <!-- Project 3 -->
+      <div class="col-lg-4 col-md-6 mb-4 project-item">
+        <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+          <img src="{{ url_for('static', filename='images/medical_chatbot.png') }}" alt="Project 3" class="project-image img-fluid">
+          <div class="project-overlay">
+            <h4>Medical ChatBot</h4>
+            <p>Medical ChatBot is a context-aware medical assistant that leverages retrieval-augmented generation with a locally stored vector database (built from PDFs) to deliver dynamic, AI-powered medical advice through a modern, conversational interface.</p>
+            <div class="tech-stack">
+              <span class="badge">RAG</span>
+              <span class="badge">Python</span>
+              <span class="badge">LangChain</span>
+              <span class="badge">Generative AI</span>
             </div>
+            <a href="https://github.com/Akshat-Gupta04/Medical-ChatBOT" class="btn btn-outline-light btn-sm">
+              View on GitHub
+            </a>
           </div>
         </div>
-        <!-- Project 3 -->
-        <div class="col-lg-4 col-md-6 mb-4">
-          <div class="project-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
-            <div class="project-card">
-              <img src="{{ url_for('static', filename='images/FacePay.png') }}" alt="Project 3" class="project-image img-fluid">
-              <div class="project-overlay">
-                <h4>FacePay</h4>
-                <p>An AI-based payment system using facial recognition for secure UPI transactions.</p>
-                <div class="tech-stack">
-                  <span class="badge">AI</span>
-                  <span class="badge">Python</span>
-                  <span class="badge">Facial Recognition</span>
-                </div>
-                <a href="https://github.com/Akshat-Gupta04/FacePay.git" class="btn btn-outline-light btn-sm">View on GitHub</a>
-              </div>
+      </div>
+      <!-- Project 4 -->
+      <div class="col-lg-4 col-md-6 mb-4 project-item">
+        <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
+          <img src="{{ url_for('static', filename='images/FacePay.png') }}" alt="Project 4" class="project-image img-fluid">
+          <div class="project-overlay">
+            <h4>FacePay</h4>
+            <p>An AI-based payment system using facial recognition for secure UPI transactions.</p>
+            <div class="tech-stack">
+              <span class="badge">DeepFace</span>
+              <span class="badge">Flask</span>
+              <span class="badge">SQLite3</span>
             </div>
+            <a href="https://github.com/Akshat-Gupta04/FacePay.git" class="btn btn-outline-light btn-sm">
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Project 5 -->
+      <div class="col-lg-4 col-md-6 mb-4 project-item">
+        <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
+          <img src="{{ url_for('static', filename='images/krishi_sanrakshan.jpg') }}" alt="Project 5" class="project-image img-fluid">
+          <div class="project-overlay">
+            <h4>Krishi Sanrakshan</h4>
+            <p>Deep learning based model which works on detecting disease in livestock and plants.</p>
+            <div class="tech-stack">
+              <span class="badge">Deep Learning</span>
+              <span class="badge">Python</span>
+              <span class="badge">Streamlit</span>
+            </div>
+            <a href="https://github.com/Akshat-Gupta04/FacePay.git" class="btn btn-outline-light btn-sm">
+              View on GitHub
+            </a>
           </div>
         </div>
       </div>
     </div>
+    <!-- End Desktop Grid Layout -->
+
+    <!-- Mobile Horizontal Slider (Visible only on screens smaller than large) -->
+    <div id="projects-slider" class="d-lg-none" style="overflow-x: hidden; position: relative; padding: 10px 0;">
+      <div class="slider-wrapper" style="display: flex; transition: transform 0.5s ease-in-out;">
+        <!-- Each slide has a fixed width of 320px and horizontal margin -->
+        <!-- Project 1 Slide -->
+        <div class="slide" style="flex: 0 0 320px; margin: 0 10px;">
+          <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+            <img src="{{ url_for('static', filename='images/Akshar.png') }}" alt="Project 1" class="project-image img-fluid">
+            <div class="project-overlay">
+              <h4>Akshar</h4>
+              <p>A chat app that translates text and audio messages in real time, built using Flutter.</p>
+              <div class="tech-stack">
+                <span class="badge">Flutter</span>
+                <span class="badge">Dart</span>
+                <span class="badge">AI</span>
+              </div>
+              <a href="https://github.com/Akshat-Gupta04/AksharApp.git" class="btn btn-outline-light btn-sm">
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Project 2 Slide -->
+        <div class="slide" style="flex: 0 0 320px; margin: 0 10px;">
+          <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+            <img src="{{ url_for('static', filename='images/eye_detection.png') }}" alt="Project 2" class="project-image img-fluid">
+            <div class="project-overlay">
+              <h4>Eye Disease Detection</h4>
+              <p>Empowering precise eye disease detection through cutting-edge generative AI and deep learning on fundus images.</p>
+              <div class="tech-stack">
+                <span class="badge">Deep Learning</span>
+                <span class="badge">Generative AI</span>
+                <span class="badge">Python</span>
+              </div>
+              <a href="https://github.com/Akshat-Gupta04/FaceCheck_complete.git" class="btn btn-outline-light btn-sm">
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Project 3 Slide -->
+        <div class="slide" style="flex: 0 0 320px; margin: 0 10px;">
+          <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+            <img src="{{ url_for('static', filename='images/medical_chatbot.png') }}" alt="Project 3" class="project-image img-fluid">
+            <div class="project-overlay">
+              <h4>Medical ChatBot</h4>
+              <p>Medical ChatBot is a context-aware medical assistant that leverages retrieval-augmented generation with a locally stored vector database (built from PDFs) to deliver dynamic, AI-powered medical advice through a modern, conversational interface.</p>
+              <div class="tech-stack">
+                <span class="badge">RAG</span>
+                <span class="badge">Python</span>
+                <span class="badge">LangChain</span>
+                <span class="badge">Generative AI</span>
+              </div>
+              <a href="https://github.com/Akshat-Gupta04/Medical-ChatBOT" class="btn btn-outline-light btn-sm">
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Project 4 Slide -->
+        <div class="slide" style="flex: 0 0 320px; margin: 0 10px;">
+          <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
+            <img src="{{ url_for('static', filename='images/FacePay.png') }}" alt="Project 4" class="project-image img-fluid">
+            <div class="project-overlay">
+              <h4>FacePay</h4>
+              <p>An AI-based payment system using facial recognition for secure UPI transactions.</p>
+              <div class="tech-stack">
+                <span class="badge">DeepFace</span>
+                <span class="badge">Flask</span>
+                <span class="badge">SQLite3</span>
+              </div>
+              <a href="https://github.com/Akshat-Gupta04/FacePay.git" class="btn btn-outline-light btn-sm">
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Project 5 Slide -->
+        <div class="slide" style="flex: 0 0 320px; margin: 0 10px;">
+          <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
+            <img src="{{ url_for('static', filename='images/krishi_sanrakshan.jpg') }}" alt="Project 5" class="project-image img-fluid">
+            <div class="project-overlay">
+              <h4>Krishi Sanrakshan</h4>
+              <p>Deep learning based model which works on detecting disease in livestock and plants.</p>
+              <div class="tech-stack">
+                <span class="badge">Deep Learning</span>
+                <span class="badge">Python</span>
+                <span class="badge">Streamlit</span>
+              </div>
+              <a href="https://github.com/Akshat-Gupta04/FacePay.git" class="btn btn-outline-light btn-sm">
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div><!-- End slider-wrapper -->
+      <!-- Navigation arrows -->
+      <button id="prev" class="slider-nav-btn">Prev</button>
+      <button id="next" class="slider-nav-btn">Next</button>
+    </div>
+    <!-- End Mobile Slider Layout -->
   </div>
-  <!-- ***** End Projects Section ***** -->
+</div>
+<!-- ***** End Projects Section ***** -->
   <!-- ***** Contact Section ***** -->
  <!-- Contact Section -->
  <section id="contact" class="contact section">
@@ -578,7 +851,7 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Scripts: Load each only once and in the proper order -->
   <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
   <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/owl-carousel.js') }}"></script>
@@ -587,9 +860,10 @@
   <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
   <script src="{{ url_for('static', filename='js/animated-name.js') }}"></script>
 
+  <!-- NEW SPLASH ANIMATION SCRIPT -->
   <script>
-    // Toggle chat window visibility
-    document.getElementById("chat-toggle").addEventListener("click", function() {
+      // Toggle chat window visibility
+      document.getElementById("chat-toggle").addEventListener("click", function() {
       document.getElementById("chat-window").classList.toggle("show");
     });
     // Close chat window
@@ -681,10 +955,137 @@
         backToTopBtn.style.display = "none";
       }
     }
-    function topFunction() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.addEventListener("DOMContentLoaded", function () {
+    if (window.innerWidth < 992) {
+      const sliderWrapper = document.querySelector('.slider-wrapper');
+      const slides = document.querySelectorAll('.slide');
+      const prevBtn = document.getElementById('prev');
+      const nextBtn = document.getElementById('next');
+      let currentSlide = 0;
+      const totalSlides = slides.length;
+      // Each slide occupies 320px + 20px margin (10px on each side)
+      const slideDistance = 320 + 20;
+      
+      function moveSlider() {
+        sliderWrapper.style.transform = `translateX(-${currentSlide * slideDistance}px)`;
+      }
+      
+      nextBtn.addEventListener('click', function () {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        moveSlider();
+      });
+      
+      prevBtn.addEventListener('click', function () {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        moveSlider();
+      });
+      
+      // Auto-slide every 3 seconds
+      setInterval(function () {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        moveSlider();
+      }, 3000);
+      
+      moveSlider();
     }
-  </script>
+  });
+    // Generated Images Array – update these URLs as needed
+    const generatedImages = [
+      'static/images/me-pics/829060827374972277.png',
+      'static/images/me-pics/829063434420179672.png',
+      'static/images/me-pics/829066921933721961.png',
+      'static/images/me-pics/829062682800884113.png',
+      'static/images/me-pics/829071186836091263.png',
+      'static/images/me-pics/829063434420179672.png',
+      'static/images/me-pics/829060943339091788.png',
+      'static/images/me-pics/829059805172734894.png',
+      'static/images/me-pics/829072604175351163.png'
+    ];
 
+    let circleImages = []; // To store references to the circle images
+    const circleContainer = document.getElementById('circleContainer');
+
+    // Create the rotating circle of images dynamically with proper spacing.
+    function createCircleImages() {
+      circleContainer.innerHTML = '';
+      circleImages = [];
+      const numImages = 8; // Number of images around the circle
+
+      // Determine effective radius: container radius - inner alert radius - fixed gap (20px)
+      const containerWidth = circleContainer.clientWidth;
+      const containerRadius = containerWidth / 2;
+      const innerAlertElem = document.querySelector('.inner-alert');
+      const innerAlertRadius = innerAlertElem.clientWidth / 2;
+      const gap = 20;
+      const effectiveRadius = containerRadius - innerAlertRadius - gap;
+
+      // Get the computed circle image size from the custom property
+      const computedSize = getComputedStyle(document.documentElement).getPropertyValue('--circle-img-size').trim();
+      let circleImgSize = parseFloat(computedSize);
+      if (isNaN(circleImgSize)) {
+        circleImgSize = 90;
+      }
+      const offset = circleImgSize / 2; // Half the size for centering
+
+      for (let i = 0; i < numImages; i++) {
+        const img = document.createElement('img');
+        img.src = generatedImages[Math.floor(Math.random() * generatedImages.length)];
+        img.classList.add('circle-image');
+        const angle = (360 / numImages) * i;
+        const radian = angle * (Math.PI / 180);
+        const x = effectiveRadius * Math.cos(radian);
+        const y = effectiveRadius * Math.sin(radian);
+        img.style.left = `calc(50% + ${x}px - ${offset}px)`;
+        img.style.top = `calc(50% + ${y}px - ${offset}px)`;
+        circleContainer.appendChild(img);
+        circleImages.push(img);
+      }
+    }
+
+    // Animate two random images from the circle to exit toward target elements
+    function animateExitToTargets() {
+      let indices = [];
+      while (indices.length < 2) {
+        const rand = Math.floor(Math.random() * circleImages.length);
+        if (!indices.includes(rand)) indices.push(rand);
+      }
+      const [firstIndex, secondIndex] = indices;
+      const img1 = circleImages[firstIndex];
+      const img2 = circleImages[secondIndex];
+
+      const mainTarget = document.getElementById('mainProfilePic').getBoundingClientRect();
+      const aboutTarget = document.getElementById('aboutProfilePic').getBoundingClientRect();
+
+      const img1Rect = img1.getBoundingClientRect();
+      const img2Rect = img2.getBoundingClientRect();
+
+      const translateX1 = (mainTarget.left + mainTarget.width / 2) - (img1Rect.left + img1Rect.width / 2);
+      const translateY1 = (mainTarget.top + mainTarget.height / 2) - (img1Rect.top + img1Rect.height / 2);
+      const translateX2 = (aboutTarget.left + aboutTarget.width / 2) - (img2Rect.left + img2Rect.width / 2);
+      const translateY2 = (aboutTarget.top + aboutTarget.height / 2) - (img2Rect.top + img2Rect.height / 2);
+
+      img1.style.transition = 'transform 1.5s ease';
+      img2.style.transition = 'transform 1.5s ease';
+      img1.style.transform = `translate(${translateX1}px, ${translateY1}px) scale(1.2)`;
+      img2.style.transform = `translate(${translateX2}px, ${translateY2}px) scale(1.2)`;
+
+      setTimeout(() => {
+        document.getElementById('mainProfilePic').src = img1.src;
+        document.getElementById('aboutProfilePic').src = img2.src;
+        const splash = document.getElementById('splash');
+        splash.style.transition = 'opacity 1s ease';
+        splash.style.opacity = 0;
+        setTimeout(() => {
+          splash.style.display = 'none';
+        }, 1000);
+      }, 1500);
+    }
+
+    // Initialize splash animation on page load
+    window.addEventListener('load', () => {
+      createCircleImages();
+      setTimeout(animateExitToTargets, 5000);
+    });
+  </script>
 </body>
 </html>
