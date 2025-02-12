@@ -1068,8 +1068,42 @@
   // Initialize splash animation on page load
   window.addEventListener('load', () => {
     createCircleImages();
-    setTimeout(animateExitToTargets, 5000);
+    setTimeout(animateExitToTargets, 4000);
   });
+  document.addEventListener("DOMContentLoaded", function () {
+  if (window.innerWidth < 992) {
+    const sliderWrapper = document.querySelector('.slider-wrapper');
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+    // Each slide occupies 320px + 20px margin (10px on each side)
+    const slideDistance = 320 + 20;
+    
+    function moveSlider() {
+      sliderWrapper.style.transform = `translateX(-${currentSlide * slideDistance}px)`;
+    }
+    
+    nextBtn.addEventListener('click', function () {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      moveSlider();
+    });
+    
+    prevBtn.addEventListener('click', function () {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      moveSlider();
+    });
+    
+    // Auto-slide every 3 seconds
+    setInterval(function () {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      moveSlider();
+    }, 3000);
+    
+    moveSlider();
+  }
+});
 </script>
   </script>
 </body>
