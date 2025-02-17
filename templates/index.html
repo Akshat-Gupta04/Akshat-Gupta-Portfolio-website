@@ -214,11 +214,15 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item"><a class="nav-link" href="#top">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="#academics">Acadamic Highlights</a></li>
+            <li class="nav-item"><a class="nav-link" href="#academics">Acadamics</a></li>
             <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
             <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
             <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
             <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('blog') }}">Blog</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link download-resume" href="{{ url_for('static', filename='Resume_AkshatGupta.pdf') }}" download>
                 Download Resume
@@ -271,34 +275,63 @@
     </div>
   </div>
   <!-- ***** End Main Banner ***** -->
-
-  <!-- ***** About Section ***** -->
-  <section id="about" class="about section">
-    <div class="container">
-      <div class="text-center mb-5">
-        <h2 class="section-title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.3s">
-          About Me
-        </h2>
-        <p class="section-subtitle wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.5s">
-          AI Enthusiast • Innovator • Lifelong Learner
-        </p>
-      </div>
-      <div class="about-card-wrapper wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.7s">
-        <div class="about-card">
-          <div class="about-image">
-            <img id="aboutProfilePic" src="" alt="Profile Image" class="img-fluid">
-          </div>
-          <div class="about-info">
-            <h3>Welcome to my journey</h3>
-            <p>
-              I am an enthusiastic AI student dedicated to artificial intelligence, machine learning, deep learning, and generative AI. Currently pursuing a B.Tech in Computer Science & Engineering at Bennett University, I develop innovative solutions that combine technical expertise with creative thinking. I constantly explore emerging trends, dive into new projects, and nurture my hobbies, all of which fuel my passion for advancing AI technology.
-            </p>
-            <a href="#contact" class="btn about-cta">Let’s Connect</a>
-          </div>
+<!-- ***** About Section ***** -->
+<section id="about" class="about section">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.3s">
+        About Me
+      </h2>
+      <p class="section-subtitle wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.5s">
+        AI Enthusiast • Innovator • Lifelong Learner
+      </p>
+    </div>
+    <div class="about-card-wrapper wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.7s">
+      <div class="about-card">
+        <div class="about-image">
+          <img id="aboutProfilePic" src="" alt="Profile Image" class="img-fluid">
+        </div>
+        <div class="about-info">
+          <h3>Welcome to my journey</h3>
+          <p>
+            I am an enthusiastic AI student dedicated to artificial intelligence, machine learning, deep learning, and generative AI. Currently pursuing a B.Tech in Computer Science & Engineering at Bennett University, I develop innovative solutions that combine technical expertise with creative thinking. I constantly explore emerging trends, dive into new projects, and nurture my hobbies, all of which fuel my passion for advancing AI technology.
+          </p>
+          <a href="#contact" class="btn about-cta">Let’s Connect</a>
+          <button class="btn btn-outline-primary about-cta" data-bs-toggle="modal" data-bs-target="#resumeModal">
+            View My Resume
+          </button>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- Resume Modal -->
+
+<!-- Resume Modal -->
+<div class="modal fade" id="resumeModal" tabindex="-1" aria-labelledby="resumeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="resumeModalLabel">My Resume</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Replace 'images/resume.png' with the path to your resume image -->
+        <img src="{{ url_for('static', filename='images/resume.jpg') }}" alt="Resume" class="img-fluid">
+      </div>
+      <div class="modal-footer">
+        <!-- Download Resume Button -->
+        <a href="{{ url_for('static', filename='Resume_AkshatGupta.pdf') }}" download class="btn about-cta">
+          Download Resume
+        </a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
   <!-- ***** End About Section ***** -->
 
 
@@ -306,83 +339,82 @@
 <!-- Academic Highlights Section -->
 <section id="academics" class="academics section">
   <div class="container">
-      <h2 class="text-center wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">Academic Highlights</h2>
-      <p class="text-center mb-5 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
-          A showcase of my academic performance and certifications.
-      </p>
+    <h2 class="text-center wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">
+      Academic Highlights
+    </h2>
+    <p class="text-center mb-5 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+      A showcase of my academic performance.
+    </p>
 
-      <!-- Background Decorative Waves -->
-      <div class="academic-bg">
-          <svg viewBox="0 0 1440 320"><path fill="rgba(255, 235, 200, 0.5)" d="M0,192L1440,64L1440,320L0,320Z"></path></svg>
+    <!-- Background Decorative Waves -->
+    <div class="academic-bg">
+      <svg viewBox="0 0 1440 320">
+        <path fill="rgba(255, 235, 200, 0.5)" d="M0,192L1440,64L1440,320L0,320Z"></path>
+      </svg>
+    </div>
+
+    <div class="row g-4">
+      <!-- CGPA Card -->
+      <div class="col-lg-4 col-md-6">
+        <div class="academic-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+          <div class="academic-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h4>Current CGPA</h4>
+          <p>8.64 / 10</p>
+        </div>
       </div>
 
-      <div class="row g-4">
-          <!-- CGPA Card -->
-          <div class="col-lg-4 col-md-6">
-              <div class="academic-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-                  <div class="academic-icon"><i class="fas fa-graduation-cap"></i></div>
-                  <h4>Current CGPA</h4>
-                  <p>8.64 / 10</p>
-              </div>
-          </div>
-
-          <!-- University Card -->
-          <div class="col-lg-4 col-md-6">
-              <div class="academic-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
-                  <div class="academic-icon"><i class="fas fa-university"></i></div>
-                  <h4>Bennett University</h4>
-                  <p>B.Tech, Computer Science & Engineering (2022 - 2026)</p>
-              </div>
-          </div>
-
-          <!-- 12th Grade Card -->
-          <div class="col-lg-4 col-md-6">
-              <div class="academic-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
-                  <div class="academic-icon"><i class="fas fa-school"></i></div>
-                  <h4>Higher Secondary</h4>
-                  <p>80% (CBSE, 2022)</p>
-              </div>
-          </div>
-
-          <!-- 10th Grade Card -->
-          <div class="col-lg-4 col-md-6">
-              <div class="academic-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.9s">
-                  <div class="academic-icon"><i class="fas fa-book"></i></div>
-                  <h4>Secondary</h4>
-                  <p>95.2% (CBSE, 2020)</p>
-              </div>
-          </div>
-
-          <!-- Certifications Integrated -->
-          <div class="col-lg-8">
-              <div class="certifications-section wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.1s">
-                  <h4><i class="fas fa-certificate"></i> Certifications</h4>
-                  <div class="certifications-list">
-                      <div class="cert-item">
-                          <i class="fas fa-award cert-icon"></i>
-                          <span class="cert-name">Machine Learning by IBM</span>
-                      </div>
-                      <div class="cert-item">
-                          <i class="fas fa-award cert-icon"></i>
-                          <span class="cert-name">Deep Learning by Google</span>
-                      </div>
-                      <div class="cert-item">
-                          <i class="fas fa-award cert-icon"></i>
-                          <span class="cert-name">Networking by Coursera</span>
-                      </div>
-                      <div class="cert-item">
-                          <i class="fas fa-award cert-icon"></i>
-                          <span class="cert-name">Supervised ML by IBM</span>
-                      </div>
-                      <div class="cert-item">
-                          <i class="fas fa-award cert-icon"></i>
-                          <span class="cert-name">Convolutional Neural Networks (TensorFlow)</span>
-                      </div>
-                  </div>
-              </div>
-          </div>
-
+      <!-- University Card -->
+      <div class="col-lg-4 col-md-6">
+        <div class="academic-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+          <div class="academic-icon"><i class="fas fa-university"></i></div>
+          <h4>Bennett University</h4>
+          <p>B.Tech, Computer Science & Engineering (2022 - 2026)</p>
+        </div>
       </div>
+
+      <!-- Higher Secondary Card -->
+      <div class="col-lg-4 col-md-6">
+        <div class="academic-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
+          <div class="academic-icon"><i class="fas fa-school"></i></div>
+          <h4>Higher Secondary</h4>
+          <p>80% (CBSE, 2022)</p>
+        </div>
+      </div>
+
+      <!-- Senior Secondary Card -->
+      <div class="col-lg-4 col-md-6">
+        <div class="academic-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.9s">
+          <div class="academic-icon"><i class="fas fa-book"></i></div>
+          <h4>Senior Secondary</h4>
+          <p>95.2% (CBSE, 2020)</p>
+        </div>
+      </div>
+
+      <!-- Selected Courses Card -->
+      <div class="col-lg-4 col-md-6">
+        <div class="academic-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.1s">
+          <div class="academic-icon"><i class="fas fa-book-open"></i></div>
+          <h4>Selected Courses</h4>
+          <p>
+            Machine Learning<br>
+            Artificial Intelligence<br>
+            Data Structures & Algorithms<br>
+            Probability & Statistics
+          </p>
+        </div>
+      </div>
+
+      <!-- Academic Interests Card -->
+      <div class="col-lg-4 col-md-6">
+        <div class="academic-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.3s">
+          <div class="academic-icon"><i class="fas fa-lightbulb"></i></div>
+          <h4>Academic Interests</h4>
+          <p>
+            Exploring cutting-edge AI techniques, deep learning, and computer vision while staying updated on industry trends.
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 <!-- ***** Research Papers Section ***** -->
@@ -758,6 +790,109 @@
   </div>
 </div>
 <!-- ***** End Projects Section ***** -->
+ <!-- Certificates Section -->
+<!-- Certificates Section -->
+<section id="certificates" class="certificates section">
+  <div class="container">
+    <h2 class="text-center wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">
+      Certificates
+    </h2>
+    <p class="text-center mb-5 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+      Browse through my certifications.
+    </p>
+    <!-- Bootstrap Carousel for Certificates (1 per slide) -->
+    <div id="certificatesCarousel" class="carousel slide" data-bs-ride="carousel">
+      <!-- Carousel Indicators -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#certificatesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#certificatesCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#certificatesCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#certificatesCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#certificatesCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+        <button type="button" data-bs-target="#certificatesCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+        <button type="button" data-bs-target="#certificatesCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
+        <button type="button" data-bs-target="#certificatesCarousel" data-bs-slide-to="7" aria-label="Slide 8"></button>
+        <button type="button" data-bs-target="#certificatesCarousel" data-bs-slide-to="8" aria-label="Slide 9"></button>
+      </div>
+
+      <div class="carousel-inner">
+        <!-- Slide 1: Certificate 1 -->
+        <div class="carousel-item active">
+          <img src="{{ url_for('static', filename='images/cert1.png') }}" class="d-block w-100 certificate-img" alt="Certificate 1" style="max-height: 400px; object-fit: contain; cursor: pointer;">
+        </div>
+        <!-- Slide 2: Certificate 2 -->
+        <div class="carousel-item">
+          <img src="{{ url_for('static', filename='images/cert2.png') }}" class="d-block w-100 certificate-img" alt="Certificate 2" style="max-height: 400px; object-fit: contain; cursor: pointer;">
+        </div>
+        <!-- Slide 3: Certificate 3 -->
+        <div class="carousel-item">
+          <img src="{{ url_for('static', filename='images/cert3.png') }}" class="d-block w-100 certificate-img" alt="Certificate 3" style="max-height: 400px; object-fit: contain; cursor: pointer;">
+        </div>
+        <!-- Slide 4: Certificate 4 -->
+        <div class="carousel-item">
+          <img src="{{ url_for('static', filename='images/cert4.png') }}" class="d-block w-100 certificate-img" alt="Certificate 4" style="max-height: 400px; object-fit: contain; cursor: pointer;">
+        </div>
+        <!-- Slide 5: Certificate 5 -->
+        <div class="carousel-item">
+          <img src="{{ url_for('static', filename='images/cert5.png') }}" class="d-block w-100 certificate-img" alt="Certificate 5" style="max-height: 400px; object-fit: contain; cursor: pointer;">
+        </div>
+        <!-- Slide 6: Certificate 6 -->
+        <div class="carousel-item">
+          <img src="{{ url_for('static', filename='images/cert6.png') }}" class="d-block w-100 certificate-img" alt="Certificate 6" style="max-height: 400px; object-fit: contain; cursor: pointer;">
+        </div>
+        <!-- Slide 7: Certificate 7 -->
+        <div class="carousel-item">
+          <img src="{{ url_for('static', filename='images/cert7.png') }}" class="d-block w-100 certificate-img" alt="Certificate 7" style="max-height: 400px; object-fit: contain; cursor: pointer;">
+        </div>
+        <!-- Slide 8: Certificate 8 -->
+        <div class="carousel-item">
+          <img src="{{ url_for('static', filename='images/cert8.png') }}" class="d-block w-100 certificate-img" alt="Certificate 8" style="max-height: 400px; object-fit: contain; cursor: pointer;">
+        </div>
+        <!-- Slide 9: Certificate 9 -->
+        <div class="carousel-item">
+          <img src="{{ url_for('static', filename='images/cert9.png') }}" class="d-block w-100 certificate-img" alt="Certificate 9" style="max-height: 400px; object-fit: contain; cursor: pointer;">
+        </div>
+      </div>
+      <!-- Carousel Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#certificatesCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#certificatesCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Certificate Modal -->
+<div class="modal fade" id="certificateModal" tabindex="-1" aria-labelledby="certificateModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="certificateModalLabel">Certificate</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="" alt="Certificate" id="modalCertificateImg" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Certificate Modal Script -->
+<script>
+  // Attach click event on all certificate images inside the carousel
+  document.querySelectorAll('.certificate-img').forEach(function(img) {
+    img.addEventListener('click', function() {
+      var src = this.getAttribute('src');
+      document.getElementById('modalCertificateImg').setAttribute('src', src);
+      var modal = new bootstrap.Modal(document.getElementById('certificateModal'));
+      modal.show();
+    });
+  });
+</script>
   <!-- ***** Contact Section ***** -->
  <!-- Contact Section -->
  <section id="contact" class="contact section">
@@ -1089,7 +1224,7 @@
   // Initialize splash animation on page load
   window.addEventListener('load', () => {
     createCircleImages();
-    setTimeout(animateExitToTargets, 4000);
+    setTimeout(animateExitToTargets, 5000);
   });
   document.addEventListener("DOMContentLoaded", function () {
   if (window.innerWidth < 992) {

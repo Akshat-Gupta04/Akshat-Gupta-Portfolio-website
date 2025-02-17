@@ -1413,3 +1413,64 @@ color: #ffffff !important;
   .slider-nav-btn:hover {
     background-color: rgba(0, 0, 0, 0.8);
   }
+/* Certificates Section */
+.certificates.section {
+  padding: 100px 0;
+  background-color: #c8bfb6; /* Light background for contrast */
+}
+
+.certificates h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.certificates p {
+  font-size: 1.1rem;
+  color: #777;
+  margin-bottom: 40px;
+}
+
+/* Carousel Indicators (Dotted Slider) */
+.carousel-indicators {
+  bottom: -30px;
+}
+.carousel-indicators button {
+  background-color: #adf7e8;
+  border: none;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  opacity: 0.8;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+.carousel-indicators button.active,
+.carousel-indicators button:hover {
+  background-color: #333;
+  opacity: 1;
+}
+
+/* Carousel Slide & Certificate Image Styles */
+.carousel-item {
+  padding: 20px 0;
+}
+
+.certificate-img {
+  max-height: 400px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.certificate-img:hover {
+  transform: scale(1.05);
+}
+
+/* Optional: Customize Carousel Controls */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 50%;
+}

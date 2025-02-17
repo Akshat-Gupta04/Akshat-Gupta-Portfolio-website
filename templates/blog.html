@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akshat Gupta - Blog</title>
+  <!-- Bootstrap CSS -->
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+  <!-- Your Main CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+  <style>
+    /* Custom styles for the Blog page */
+    .blog-header {
+      background: linear-gradient(90deg, #1d3557, #457b9d);
+      color: #fff;
+      padding: 60px 0;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .blog-header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+    .blog-header p {
+      font-size: 1.2rem;
+    }
+    .blog-post {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+      transition: all 0.3s ease;
+    }
+    .blog-post h2 {
+      color: #1d3557;
+      margin-bottom: 15px;
+    }
+    .blog-post .post-date {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 15px;
+    }
+    .blog-post .tags {
+      margin-bottom: 15px;
+    }
+    .blog-post .tags .badge {
+      background-color: #457b9d;
+      margin-right: 5px;
+      font-size: 0.8rem;
+    }
+    .blog-post p {
+      color: #333;
+      line-height: 1.6;
+    }
+    .full-text {
+      margin-top: 20px;
+    }
+    @media (max-width: 576px) {
+      .blog-header h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Navbar -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="{{ url_for('home') }}">
+          <span class="logo-text">Akshat Gupta</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <!-- Link back to home and its sections -->
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('home') }}#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('home') }}#academics">Academics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('home') }}#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('home') }}#contact">Contact</a>
+            </li>   
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Blog Header -->
+  <section class="blog-header">
+    <div class="container">
+      <h1>My Learning Journey</h1>
+      <p>Sharing insights, experiences, and tutorials on AI, ML, and more.</p>
+    </div>
+  </section>
+
+  <!-- Blog Posts Section -->
+  <section class="blog-posts">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <!-- Blog Post 1 -->
+          <div class="blog-post">
+            <h2>Understanding Deep Learning Basics</h2>
+            <div class="post-date">Published on February 17, 2025</div>
+            <div class="tags">
+              <span class="badge">Deep Learning</span>
+              <span class="badge">Neural Networks</span>
+              <span class="badge">Tutorial</span>
+            </div>
+            <!-- Excerpt -->
+            <p>
+              In this post, I break down the fundamental concepts of deep learning—from neural networks to backpropagation.
+              This excerpt provides a brief overview of the core principles.
+            </p>
+            <!-- Hidden Full Text -->
+            <div class="collapse full-text" id="collapseDeepLearning">
+              <p>
+                Here is the full text: I dive into the mechanics of deep learning, exploring how neural networks mimic the human brain’s ability to learn. I explain backpropagation, activation functions, and the optimization methods that power modern AI. The article is packed with practical examples, diagrams, and personal insights that have guided my learning journey. This comprehensive guide is designed to help beginners build a strong foundation while offering advanced tips for those already familiar with the subject.
+              </p>
+            </div>
+            <!-- Toggle Button -->
+            <button class="btn btn-outline-primary toggle-btn" data-bs-toggle="collapse" data-bs-target="#collapseDeepLearning" aria-expanded="false">
+              Read More
+            </button>
+          </div>
+          <!-- Blog Post 2 -->
+          <div class="blog-post">
+            <h2>Exploring the Latest in Generative AI</h2>
+            <div class="post-date">Published on February 10, 2025</div>
+            <div class="tags">
+              <span class="badge">Generative AI</span>
+              <span class="badge">GPT</span>
+              <span class="badge">Research</span>
+            </div>
+            <!-- Excerpt -->
+            <p>
+              Generative AI is evolving rapidly. This post introduces the latest trends and my experiments with models like GPT and Stable Diffusion.
+            </p>
+            <!-- Hidden Full Text -->
+            <div class="collapse full-text" id="collapseGenerativeAI">
+              <p>
+                In detail, I discuss the breakthroughs in generative models, including architecture improvements, fine-tuning techniques, and real-world applications. I share my own experiences experimenting with these models, the challenges I faced, and the insights I gained along the way. This extended discussion is aimed at researchers and enthusiasts who want to explore the state-of-the-art in generative AI, including the nuances of model training and deployment.
+              </p>
+            </div>
+            <!-- Toggle Button -->
+            <button class="btn btn-outline-primary toggle-btn" data-bs-toggle="collapse" data-bs-target="#collapseGenerativeAI" aria-expanded="false">
+              Read More
+            </button>
+          </div>
+          <!-- Add more blog posts following the same structure if needed -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center">
+      <p>&copy; 2025 Akshat Gupta. All Rights Reserved.</p>
+      <div class="social-links mt-3">
+        <a href="mailto:akshat9306@gmail.com" target="_blank" class="mx-2">
+          <img src="{{ url_for('static', filename='images/mail.svg') }}" alt="Email Icon" style="width: 24px; height: 24px;">
+        </a>
+        <a href="https://github.com/Akshat-Gupta04" target="_blank" class="mx-2">
+          <img src="{{ url_for('static', filename='images/github.svg') }}" alt="GitHub Icon" style="width: 24px; height: 24px;">
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script>
+    // Optional: Toggle button text between "Read More" and "Collapse"
+    document.querySelectorAll('.toggle-btn').forEach(function(button) {
+      button.addEventListener('click', function() {
+        // The target collapse element id is in data-bs-target (e.g., "#collapseDeepLearning")
+        var targetSelector = this.getAttribute('data-bs-target');
+        var targetEl = document.querySelector(targetSelector);
+        // Use Bootstrap's collapse events to detect shown/hidden state
+        targetEl.addEventListener('shown.bs.collapse', () => {
+          this.textContent = 'Collapse';
+        });
+        targetEl.addEventListener('hidden.bs.collapse', () => {
+          this.textContent = 'Read More';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

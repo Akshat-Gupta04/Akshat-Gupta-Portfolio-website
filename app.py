@@ -55,6 +55,9 @@ MAX_REQUESTS_PER_USER = 10
 def home():
     session["request_count"] = 0  # Reset API count for each new session
     return render_template('index.html')
+@app.route('/blog')
+def blog():
+    return render_template('blog.html')
 
 @app.route('/ask', methods=['POST'])
 def ask():
@@ -86,6 +89,9 @@ He has contributed to multiple AI-driven projects and research papers.
 - **Multi-Modal Meta Learner (M3L)**: A scalable image processing framework.
 - **Potato Disease Detection**: Deep learning + Grasshopper Optimization Algorithm.
 - **Brain Tumor Detection**: AI-powered medical image classification.
+
+if someone ask out of context question then answer will be:
+**Sorry, I can only provide information related to Akshat Gupta's projects.**
 
 ### Answer the following:
 **{query}**
