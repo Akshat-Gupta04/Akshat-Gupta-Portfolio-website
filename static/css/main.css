@@ -1477,21 +1477,15 @@ color: #ffffff !important;
 }
 .floating-blog-btn {
   position: fixed;
-  bottom: 30px;
-  left: 30px;
-  z-index: 9999;
-}
-.floating-blog-btn {
-  position: fixed;
-  bottom: 30px;
-  left: 30px;
+  bottom: 25px;
+  left: 25px;
   z-index: 9999;
 }
 
 .floating-blog-btn .btn-blog {
   background: linear-gradient(135deg, #ff3c3c, #e22f71);
   color: #fff;
-  padding: 15px 25px;
+  padding: 10px 20px;
   border-radius: 50px;
   text-decoration: none;
   font-size: 0.9rem;
