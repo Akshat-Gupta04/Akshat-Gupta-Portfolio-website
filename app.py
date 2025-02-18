@@ -4,8 +4,6 @@ import openai
 from langchain_community.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.vectorstores import FAISS
 import os
 from dotenv import load_dotenv
 
@@ -23,30 +21,6 @@ app.secret_key = "your_secret_key_here"  # Needed for session tracking
 # Initialize the LLM model (GPT-3.5-turbo)
 llm = ChatOpenAI(model="gpt-3.5-turbo", openai_api_key=openai.api_key)
 
-# Define project details
-project_docs = [
-    """My LoRA Model: Developed a highly realistic image generation model fine-tuned on personalized facial data using a Custom LoRA technique.
-    This model enhances generative capabilities while reducing computational costs.""",
-    """Akshar: A real-time translation chat application built with Flutter that integrates AI-based speech processing for seamless multilingual communication.
-    This app allows instant voice and text translation across multiple languages.""",
-    """Eye Disease Detection: A deep learning model designed to classify retinal diseases from fundus images, leveraging convolutional neural networks for early diagnosis.
-    The model improves early detection rates and supports ophthalmologists in accurate diagnosis.""",
-    """Medical ChatBot: An AI-powered medical assistant using retrieval-augmented generation to deliver dynamic, context-aware medical advice.
-    It provides initial medical guidance, symptom analysis, and basic health recommendations.""",
-    """FacePay: An AI-powered facial recognition payment system designed as an alternative to QR codes.
-    This solution ensures secure, contactless transactions with high accuracy and fraud prevention."""
-]
-
-# Create embeddings and load FAISS index safely
-embeddings = OpenAIEmbeddings(openai_api_key=openai.api_key)
-faiss_index_path = "faiss_index"
-
-if os.path.exists(faiss_index_path):
-    vector_store = FAISS.load_local(faiss_index_path, embeddings, allow_dangerous_deserialization=True)
-else:
-    vector_store = FAISS.from_texts(project_docs, embeddings)
-    vector_store.save_local(faiss_index_path)
-
 # Set API usage limit per session
 MAX_REQUESTS_PER_USER = 10
 
@@ -55,6 +29,7 @@ MAX_REQUESTS_PER_USER = 10
 def home():
     session["request_count"] = 0  # Reset API count for each new session
     return render_template('index.html')
+
 @app.route('/blog')
 def blog():
     return render_template('blog.html')
@@ -69,7 +44,7 @@ def ask():
 
     user_message = request.json.get('question', '')
 
-    # Define a controlled-length response prompt
+    # Define a controlled-length response prompt with project details
     custom_template = """
 You are a knowledgeable AI assistant specialized in Akshat Gupta's projects. 
 Provide a **detailed but concise** response (150-200 words max).
@@ -79,31 +54,28 @@ He is currently pursuing a B.Tech in Computer Science & Engineering at Bennett U
 He has contributed to multiple AI-driven projects and research papers.
 
 ### Projects:
-- **My LoRA Model**: Fine-tuned image generation model using a Custom LoRA technique for personalized facial data.
-- **Akshar**: Real-time translation chat app built with Flutter and AI-driven speech processing.
-- **Eye Disease Detection**: CNN-based model for classifying retinal diseases from fundus images.
-- **Medical ChatBot**: AI-powered assistant using retrieval-augmented generation for medical guidance.
-- **FacePay**: Facial recognition payment system for secure, contactless transactions.
+- **My LoRA Model**: Developed a highly realistic image generation model fine-tuned on personalized facial data using a Custom LoRA technique.
+  This model enhances generative capabilities while reducing computational costs.
+- **Akshar**: A real-time translation chat app built with Flutter that integrates AI-based speech processing for seamless multilingual communication.
+- **Eye Disease Detection**: A deep learning model designed to classify retinal diseases from fundus images, leveraging convolutional neural networks for early diagnosis.
+- **Medical ChatBot**: An AI-powered medical assistant using retrieval-augmented generation to deliver dynamic, context-aware medical advice.
+- **FacePay**: An AI-powered facial recognition payment system designed as an alternative to QR codes for secure, contactless transactions.
 
 ### Research:
 - **Multi-Modal Meta Learner (M3L)**: A scalable image processing framework.
 - **Potato Disease Detection**: Deep learning + Grasshopper Optimization Algorithm.
 - **Brain Tumor Detection**: AI-powered medical image classification.
 
-if someone ask out of context question then answer will be:
-Sorry, I can only provide information related to Akshat Gupta's projects.
+If someone asks an out-of-context question, respond with:
+"Sorry, I can only provide information related to Akshat Gupta's projects."
 
+If someone greets, respond with:
+"Hello! How can I assist you today?"
 
-and if someone greets then answer will be:
-Hello! How can I assist you today? 
 ### Answer the following:
 **{query}**
     """
     prompt = PromptTemplate(input_variables=["query"], template=custom_template)
-
-    # Retrieve documents from FAISS
-    retrieved_docs = vector_store.similarity_search(user_message)
-    context = "\n".join([doc.page_content for doc in retrieved_docs]) if retrieved_docs else "No relevant context found."
 
     # Create LLMChain
     llm_chain = LLMChain(llm=llm, prompt=prompt)
