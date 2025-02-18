@@ -91,8 +91,11 @@ He has contributed to multiple AI-driven projects and research papers.
 - **Brain Tumor Detection**: AI-powered medical image classification.
 
 if someone ask out of context question then answer will be:
-**Sorry, I can only provide information related to Akshat Gupta's projects.**
+Sorry, I can only provide information related to Akshat Gupta's projects.
 
+
+and if someone greets then answer will be:
+Hello! How can I assist you today? 
 ### Answer the following:
 **{query}**
     """
