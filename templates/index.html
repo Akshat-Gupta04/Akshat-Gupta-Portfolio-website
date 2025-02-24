@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.css') }}" />
+  
 
   <!-- Custom Inline Styles for SPLASH ANIMATION, Notification Banner, and Responsive Navbar -->
   <style>
@@ -790,7 +791,236 @@
     <!-- End Mobile Slider Layout -->
   </div>
 </div>
-<!-- ***** End Projects Section ***** -->
+<!-- ================================================ -->
+<!-- AI ARCHITECTURES SECTION (Responsive Flip Cards) -->
+<!-- ================================================ -->
+<!-- ================================================ -->
+<!-- AI ARCHITECTURES SECTION (Responsive Flip Cards) -->
+<!-- ================================================ -->
+<section id="ai-architectures" class="ai-architectures-section">
+  <div class="container">
+    <header class="section-header">
+      <h2 class="section-title wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">
+        Immersive AI Architectures
+      </h2>
+      <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+        Hand-coded, custom-built neural networks &amp; generative models
+      </p>
+    </header>
+
+    <!-- Cards Wrapper: Grid on larger screens; horizontal scroll on mobile -->
+    <div class="cards-wrapper">
+      <!-- Card 1 -->
+      <div class="card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+        <div class="card-inner">
+          <!-- Front Side -->
+          <div class="card-front">
+            <img src="{{ url_for('static', filename='images/arch1.png') }}" alt="Architecture Diagram 1">
+            <h4>Sparse CNN + Vision Transformer</h4>
+          </div>
+          <!-- Back Side -->
+          <div class="card-back">
+            <h5>Key Highlights</h5>
+            <ul>
+              <li>Sparse convolution layers for efficiency</li>
+              <li>Transformer encoder blocks for global context</li>
+              <li>Custom pre-processing for large-scale image tasks</li>
+            </ul>
+            <button class="code-btn" data-bs-toggle="modal" data-bs-target="#architecture1Modal">
+              Show Code
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- END Card 1 -->
+
+      <!-- Card 2 -->
+      <div class="card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="{{ url_for('static', filename='images/arch2.png') }}" alt="Architecture Diagram 2">
+            <h4>GAN with Customized ResNet Generator</h4>
+          </div>
+          <div class="card-back">
+            <h5>Key Highlights</h5>
+            <ul>
+              <li>ResNet-based Generator</li>
+              <li>PatchGAN Discriminator</li>
+              <li>Advanced loss scheduling &amp; partial conv layers</li>
+            </ul>
+            <button class="code-btn" data-bs-toggle="modal" data-bs-target="#architecture2Modal">
+              Show Code
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- END Card 2 -->
+
+      <!-- Card 3 -->
+      <div class="card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="{{ url_for('static', filename='images/arch3.png') }}" alt="Architecture Diagram 3">
+            <h4>RNN Language Model (LSTM)</h4>
+          </div>
+          <div class="card-back">
+            <h5>Key Highlights</h5>
+            <ul>
+              <li>Multi-layer LSTM from scratch</li>
+              <li>Learned embeddings &amp; skip-connections</li>
+              <li>Perplexity &lt; 40 on small corpora</li>
+            </ul>
+            <button class="code-btn" data-bs-toggle="modal" data-bs-target="#architecture3Modal">
+              Show Code
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- END Card 3 -->
+    </div>
+  </div>
+</section>
+
+<!-- Modals for Code Samples (remain unchanged) -->
+<!-- Modal 1: Architecture 1 Code -->
+<div class="modal fade" id="architecture1Modal" tabindex="-1" aria-labelledby="architecture1ModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content dark-modal">
+      <div class="modal-header">
+        <h5 class="modal-title" id="architecture1ModalLabel">Sparse CNN + Vision Transformer (Code)</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="language-python">
+{%- raw -%}
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+class SparseConv2d(nn.Conv2d):
+    # Implement forward pass with a custom sparse mask or gating
+    def forward(self, x):
+        out = super().forward(x)
+        # out *= some_sparse_mask
+        return out
+
+class VisionTransformerBlock(nn.Module):
+    # Minimal Transformer encoder block
+    def __init__(self, dim, n_heads=4):
+        super().__init__()
+        self.attn = nn.MultiheadAttention(embed_dim=dim, num_heads=n_heads)
+        self.ff = nn.Sequential(
+            nn.Linear(dim, dim*4),
+            nn.ReLU(),
+            nn.Linear(dim*4, dim)
+        )
+        self.norm1 = nn.LayerNorm(dim)
+        self.norm2 = nn.LayerNorm(dim)
+
+    def forward(self, x):
+        # x: (seq_len, batch, dim)
+        attn_out, _ = self.attn(x, x, x)
+        x = self.norm1(x + attn_out)
+        ff_out = self.ff(x)
+        x = self.norm2(x + ff_out)
+        return x
+
+class HybridModel(nn.Module):
+    def __init__(self, in_channels=3, num_classes=10):
+        super().__init__()
+        self.conv1 = SparseConv2d(in_channels, 32, kernel_size=3, padding=1)
+        self.conv2 = SparseConv2d(32, 64, kernel_size=3, padding=1)
+        self.pool = nn.MaxPool2d(2,2)
+
+        # Flatten -> project for Transformer
+        self.fc_proj = nn.Linear(64*8*8, 128)
+        self.transformer = VisionTransformerBlock(dim=128)
+        self.classifier = nn.Linear(128, num_classes)
+
+    def forward(self, x):
+        # CNN portion
+        x = F.relu(self.conv1(x))
+        x = self.pool(F.relu(self.conv2(x)))
+        x = x.view(x.size(0), -1)  # flatten
+
+        # Transformer portion
+        x = self.fc_proj(x)
+        x = x.unsqueeze(0)  # (1, batch, 128)
+        x = self.transformer(x)
+        x = x.squeeze(0)    # (batch, 128)
+
+        # Classification
+        return self.classifier(x)
+{%- endraw -%}
+        </code></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 2: Architecture 2 Code -->
+<div class="modal fade" id="architecture2Modal" tabindex="-1" aria-labelledby="architecture2ModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content dark-modal">
+      <div class="modal-header">
+        <h5 class="modal-title" id="architecture2ModalLabel">GAN with ResNet Generator (Code)</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="language-python">
+{%- raw -%}
+# Example snippet for a custom ResNet-based generator & PatchGAN
+class ResNetGenerator(nn.Module):
+    # ...
+    pass
+
+class PatchGANDiscriminator(nn.Module):
+    # ...
+    pass
+
+class CustomGAN(nn.Module):
+    # ...
+    pass
+{%- endraw -%}
+        </code></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 3: Architecture 3 Code -->
+<div class="modal fade" id="architecture3Modal" tabindex="-1" aria-labelledby="architecture3ModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content dark-modal">
+      <div class="modal-header">
+        <h5 class="modal-title" id="architecture3ModalLabel">RNN Language Model (Code)</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="language-python">
+{%- raw -%}
+import torch
+import torch.nn as nn
+
+class CustomRNNLanguageModel(nn.Module):
+    def __init__(self, vocab_size, embed_size=256, hidden_size=512, layers=2):
+        super().__init__()
+        self.embedding = nn.Embedding(vocab_size, embed_size)
+        self.lstm = nn.LSTM(embed_size, hidden_size, num_layers=layers, batch_first=True)
+        self.fc_out = nn.Linear(hidden_size, vocab_size)
+
+    def forward(self, x, hidden=None):
+        # x shape: (batch, seq_len)
+        emb = self.embedding(x)
+        output, hidden = self.lstm(emb, hidden)
+        logits = self.fc_out(output)
+        return logits, hidden
+{%- endraw -%}
+        </code></pre>
+      </div>
+    </div>
+  </div>
+</div>
  <!-- Certificates Section -->
 <!-- Certificates Section -->
 <section id="certificates" class="certificates section">
@@ -903,71 +1133,48 @@
   </a>
 </div>
  <!-- Contact Section -->
- <section id="contact" class="contact section">
+<section id="contact" class="contact section">
   <div class="container">
-      <h2 class="text-center wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">Get in Touch</h2>
-      <p class="text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
-          Have a project, question, or collaboration idea? Feel free to reach out.
-      </p>
+    <h2 class="section-title wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">
+      Get in Touch
+    </h2>
+    <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+      Have a project, question, or collaboration idea? Let’s connect and bring ideas to life.
+    </p>
 
-      <div class="contact-container">
-          <div class="row align-items-center">
-              <!-- Contact Information -->
-              <div class="col-lg-5">
-                  <div class="contact-info wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
-                      <h4>Contact Details</h4>
-
-                      <div class="contact-item">
-                          <i class="fas fa-envelope"></i>
-                          <a href="mailto:akshat9306@gmail.com" class="contact-email">Email</a>
-                      </div>
-
-                      <div class="contact-item">
-                          <i class="fab fa-linkedin"></i>
-                          <a href="https://www.linkedin.com/in/akshat-gupta-077a7b256/" target="_blank">
-                              LinkedIn
-                          </a>
-                  
-                      </div>
-
-                      <div class="contact-item">
-                          <i class="fab fa-github"></i>
-                          <a href="https://github.com/Akshat-Gupta04" target="_blank"> Github</a>
-                      </div>
-
-                      <div class="contact-item">
-                          <i class="fas fa-map-marker-alt"></i>
-                          <p>Location</p>
-                          <span>Greater Noida, India</span>
-                      </div>
-                  </div>
-              </div>
-
-              <!-- Contact Form -->
-              <div class="col-lg-7">
-                  <div class="contact-form wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                      <h4>Send a Message</h4>
-
-                      <form action="mailto:akshat9306@gmail.com" method="post" enctype="text/plain">
-                          <div class="row">
-                              <div class="col-md-6 mb-3">
-                                  <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-                              </div>
-                              <div class="col-md-6 mb-3">
-                                  <input type="email" name="email" class="form-control" placeholder="Your Email" required>
-                              </div>
-                          </div>
-                          <div class="mb-3">
-                              <textarea name="message" class="form-control" rows="4" placeholder="Your Message" required></textarea>
-                          </div>
-                          <div class="text-center">
-                              <button type="submit" class="btn contact-btn">Send Message</button>
-                          </div>
-                      </form>
-                  </div>
-              </div>
-          </div>
+    <div class="contact-container">
+      <div class="contact-info wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+        <h4>Contact Details</h4>
+        <div class="contact-item">
+          <!-- Replace 'assets/icons/email.svg' with your actual email SVG logo path -->
+          <img src="static/images/mail.svg" alt="Email Logo" class="contact-icon">
+          <a href="mailto:akshat9306@gmail.com" class="contact-email">akshat9306@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <!-- Replace 'assets/icons/linkedin.svg' with your actual LinkedIn SVG logo path -->
+          <img src="static/images/linkedin.svg" alt="LinkedIn Logo" class="contact-icon">
+          <a href="https://www.linkedin.com/in/akshat-gupta-077a7b256/" target="_blank">
+            linkedin.com/in/akshat-gupta
+          </a>
+        </div>
+        <div class="contact-item">
+          <!-- Replace 'assets/icons/github.svg' with your actual GitHub SVG logo path -->
+          <img src="static/images/github.svg" alt="GitHub Logo" class="contact-icon">
+          <a href="https://github.com/Akshat-Gupta04" target="_blank">
+            github.com/Akshat-Gupta04
+          </a>
+        </div>
+        <div class="contact-item">
+          <!-- Replace 'assets/icons/location.svg' with your actual Location SVG logo path -->
+        
+          <p>Greater Noida, India</p>
+        </div>
       </div>
+    </div>
+
+    <p class="final-note wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
+      Looking forward to connecting and exploring new opportunities.
+    </p>
   </div>
 </section>
   <!-- ***** End Contact Section ***** -->
@@ -995,24 +1202,14 @@
   </div>
 
   <!-- Footer -->
-  <footer>
-    <div class="container text-center">
-      <p class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s">
-        2025 © Akshat Gupta. All Rights Reserved.
-      </p>
-      <div class="social-links mt-3">
-        <a href="mailto:akshat9306@gmail.com" target="_blank" class="mx-2">
-          <img src="{{ url_for('static', filename='images/mail.svg') }}" alt="Email Icon" style="width: 24px; height: 24px;">
-        </a>
-        <a href="https://github.com/Akshat-Gupta04" target="_blank" class="mx-2">
-          <img src="{{ url_for('static', filename='images/github.svg') }}" alt="GitHub Icon" style="width: 24px; height: 24px;">
-        </a>
-        <a href="tel:+9306199632" class="mx-2">
-          <img src="{{ url_for('static', filename='images/alternate-phone.svg') }}" alt="Phone Icon" style="width: 24px; height: 24px;">
-        </a>
-      </div>
-    </div>
-  </footer>
+ <!-- Footer -->
+<footer>
+  <div class="container text-center">
+    <p class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s">
+      2025 © Akshat Gupta. All Rights Reserved.
+    </p>
+  </div>
+</footer>
 
   <!-- Scripts: Load each only once and in the proper order -->
   <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
