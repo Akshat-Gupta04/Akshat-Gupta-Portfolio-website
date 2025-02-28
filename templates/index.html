@@ -418,53 +418,7 @@
     </div>
   </div>
 </section>
-<!-- ***** Research Papers Section ***** -->
-<section id="research" class="research section">
-  <div class="container">
-    <h2 class="text-center wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">Research Papers</h2>
-    <p class="text-center mb-5 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
-        Below are the research papers that I am currently working on.
-    </p>
 
-    <div class="row g-4">
-      <div class="col-lg-4 col-md-6">
-        <div class="research-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
-          <h4>Multi-Modal Meta Learner (M3L): A Unified, Scalable Architecture for State-of-the-Art Image Processing</h4>
-          <p><strong>Abstract:</strong>A state-of-the-art image processing model that unifies several advanced deep learning techniques into a single architecture. It integrates Sparse CNN, Vision Transformers, Graph Neural Networks, along with Diffusion Models, Neural Architecture Search, and Masked Autoencoders for self-supervised representation learning.</p>
-          <div class="research-links">
-            <a href="#" class="btn btn-outline-dark btn-sm" target="_blank">Work in Progress</a>
-           </div>
-        </div>
-      </div>
-      <!-- Research Paper 1 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="research-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-          <h4>A Lightweight Deep Learning Framework for Detecting Potato Disease Using the Grasshopper Optimization Algorithm</h4>
-          <p><strong>Abstract:</strong>This study focused on artificial intelligence applied in potato disease detection,through a lightweight deep learning framework. The suggested model uses an integration of MobileNetV2 with Grasshopper Optimization Algorithm,for five potato diseases for classification.</p>
-          <div class="research-links">
-            <a href="#" class="btn btn-outline-dark btn-sm" target="_blank">Work in Progress</a>  
-          </div>
-        </div>
-      </div>
-
-      <!-- Research Paper 2 -->
-     
-
-      <!-- Research Paper 3 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="research-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
-          <h4>Deep Learning-Based Brain Tumor Identification</h4>
-          
-          <p><strong>Abstract:</strong> This research paper mainly focuses on using deep learning techniques, specifically convolutional neural networks (CNNs), to identify brain tumors from magnetic resonance imaging (MRI) scans. The chosen dataset contains scans of brain tumors consisting of 4 classes.</p>
-          <div class="research-links">
-            <a href="#" class="btn btn-outline-dark btn-sm" target="_blank">Work in Progress</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- ***** End Research Papers Section ***** -->
   <!-- ***** Skills Section ***** -->
 <!-- Skills Section -->
 <section id="skills" class="skills section">
@@ -667,6 +621,61 @@
           </div>
         </div>
       </div>
+      <div class="col-lg-4 col-md-6 mb-4 project-item">
+        <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
+          <img src="{{ url_for('static', filename='images/translation.png') }}" alt="Project 4" class="project-image img-fluid">
+          <div class="project-overlay">
+            <h4>English to Hindi Text translation</h4>
+            <p>Build an english to hindi translation app by implementing tranformers from scratch </p>
+            <div class="tech-stack">
+              <span class="badge">Python</span>
+              <span class="badge">NLP</span>
+              <span class="badge">Deep Learning</span>
+            </div>
+            <a href="https://github.com/Akshat-Gupta04/English-to-Hindi-Tranlstion-using-Transformers-Scratch-.git" class="btn btn-outline-light btn-sm">
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4 project-item">
+        <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
+          <img src="{{ url_for('static', filename='images/sentiment.jpg') }}" alt="Teacher-Student Distillation on IMDB" class="project-image img-fluid">
+          <div class="project-overlay">
+            <h4>Teacher-Student Distillation on IMDB</h4>
+            <p>A sentiment analysis pipeline that distills a large teacher model into a compact student model for robust sentiment prediction on IMDB movie reviews.</p>
+            <div class="tech-stack">
+              <span class="badge">Teacher-Student Distillation</span>
+              <span class="badge">Hugging Face</span>
+              <span class="badge">Transformers</span>
+              <span class="badge">IMDB</span>
+            </div>
+            <a href="https://github.com/Akshat-Gupta04/Teacher-Student-Distillation-on-IMDB-Movie-Sentiment-Reviews.git" class="btn btn-outline-light btn-sm" target="_blank">
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4 project-item">
+        <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
+          <img src="{{ url_for('static', filename='images/vision.png') }}" alt="Vision Transformer for MNIST" class="project-image img-fluid">
+          <div class="project-overlay">
+            <h4>Vision Transformer for MNIST</h4>
+            <p>This repository contains an implementation of a Vision Transformer (ViT) built from scratch for image classification on the MNIST dataset. It features a custom encoder layer with multi-head self-attention and a feed-forward network.</p>
+            <div class="tech-stack">
+              <span class="badge">Vision Transformer</span>
+              <span class="badge">PyTorch</span>
+              <span class="badge">MNIST</span>
+              <span class="badge">Attention</span>
+            </div>
+            <a href="https://github.com/Akshat-Gupta04/Vision-Transformers-from-scratch.git" class="btn btn-outline-light btn-sm" target="_blank">
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+     
     </div>
     <!-- End Desktop Grid Layout -->
 
@@ -782,6 +791,55 @@
             </div>
           </div>
         </div>
+        <div class="slide" style="flex: 0 0 320px; margin: 0 10px;">
+          <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+            <img src="{{ url_for('static', filename='images/translation.png') }}" alt="lora_model" class="project-image img-fluid">
+            <div class="project-overlay">
+              <h4>English to Hindi Text translation</h4>
+              <p>Build an english to hindi translation app by implementing tranformers from scratch </p>
+              <div class="tech-stack">
+                  <span class="badge">Python</span>
+                  <span class="badge">NLP</span>
+                  <span class="badge">Deep Learning</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide" style="flex: 0 0 320px; margin: 0 10px;">
+          <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+            <img src="{{ url_for('static', filename='images/sentiment.jpg') }}" alt="teacher_student" class="project-image img-fluid">
+            <div class="project-overlay">
+              <h4>Teacher-Student Distillation on IMDB</h4>
+              <p>This project demonstrates teacher–student distillation on the IMDB movie sentiment dataset. A powerful teacher model annotates reviews with sentiment labels, and a compact student model is fine-tuned on these synthetic labels, achieving competitive performance with reduced model size and computational cost.</p>
+              <div class="tech-stack">
+                  <span class="badge">Teacher-Student Distillation</span>
+                  <span class="badge">IMDB Sentiment Analysis</span>
+                  <span class="badge">Hugging Face</span>
+                  <span class="badge">Transformers</span>
+              </div>
+              <a href="https://github.com/Akshat-Gupta04/Teacher-Student-Distillation-on-IMDB-Movie-Sentiment-Reviews.git" target="_blank" class="project-link">View on GitHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="slide" style="flex: 0 0 320px; margin: 0 10px;">
+          <div class="project-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
+            <img src="{{ url_for('static', filename='images/vision.png') }}" alt="Vision Transformer for MNIST" class="project-image img-fluid">
+            <div class="project-overlay">
+              <h4>Vision Transformer for MNIST</h4>
+              <p>This repository implements a Vision Transformer (ViT) built entirely from scratch for image classification on the MNIST dataset. It features a custom encoder layer with multi-head self-attention and a feed-forward network.</p>
+              <div class="tech-stack">
+                <span class="badge">Vision Transformer</span>
+                <span class="badge">PyTorch</span>
+                <span class="badge">MNIST</span>
+                <span class="badge">Attention</span>
+              </div>
+              <a href="https://github.com/Akshat-Gupta04/Vision-Transformers-from-scratch.git" class="btn btn-outline-light btn-sm" target="_blank">
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+        
       </div><!-- End slider-wrapper -->
       <!-- Navigation arrows -->
       <button id="prev" class="slider-nav-btn">Prev</button>
@@ -791,6 +849,53 @@
   </div>
 </div>
 <!-- ***** End Projects Section ***** -->
+ <!-- ***** Research Papers Section ***** -->
+<section id="research" class="research section">
+  <div class="container">
+    <h2 class="text-center wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">Research Papers</h2>
+    <p class="text-center mb-5 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+        Below are the research papers that I am currently working on.
+    </p>
+
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="research-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+          <h4>Multi-Modal Meta Learner (M3L): A Unified, Scalable Architecture for State-of-the-Art Image Processing</h4>
+          <p><strong>Abstract:</strong>A state-of-the-art image processing model that unifies several advanced deep learning techniques into a single architecture. It integrates Sparse CNN, Vision Transformers, Graph Neural Networks, along with Diffusion Models, Neural Architecture Search, and Masked Autoencoders for self-supervised representation learning.</p>
+          <div class="research-links">
+            <a href="#" class="btn btn-outline-dark btn-sm" target="_blank">Work in Progress</a>
+           </div>
+        </div>
+      </div>
+      <!-- Research Paper 1 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="research-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+          <h4>A Lightweight Deep Learning Framework for Detecting Potato Disease Using the Grasshopper Optimization Algorithm</h4>
+          <p><strong>Abstract:</strong>This study focused on artificial intelligence applied in potato disease detection,through a lightweight deep learning framework. The suggested model uses an integration of MobileNetV2 with Grasshopper Optimization Algorithm,for five potato diseases for classification.</p>
+          <div class="research-links">
+            <a href="#" class="btn btn-outline-dark btn-sm" target="_blank">Work in Progress</a>  
+          </div>
+        </div>
+      </div>
+
+      <!-- Research Paper 2 -->
+     
+
+      <!-- Research Paper 3 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="research-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
+          <h4>Deep Learning-Based Brain Tumor Identification</h4>
+          
+          <p><strong>Abstract:</strong> This research paper mainly focuses on using deep learning techniques, specifically convolutional neural networks (CNNs), to identify brain tumors from magnetic resonance imaging (MRI) scans. The chosen dataset contains scans of brain tumors consisting of 4 classes.</p>
+          <div class="research-links">
+            <a href="#" class="btn btn-outline-dark btn-sm" target="_blank">Work in Progress</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ***** End Research Papers Section ***** -->
  <!-- Certificates Section -->
 <!-- Certificates Section -->
 <section id="certificates" class="certificates section">
