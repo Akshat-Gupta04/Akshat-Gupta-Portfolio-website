@@ -1,80 +1,153 @@
 // main.js
 
-// Toggle chat window visibility
-document.getElementById("chat-toggle").addEventListener("click", function () {
-    var chatWindow = document.getElementById("chat-window");
-    if (chatWindow.style.display === "flex") {
-        chatWindow.style.display = "none";
-    } else {
-        chatWindow.style.display = "flex";
-    }
-});
+// Chat functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const chatToggle = document.getElementById("chat-toggle");
+    const chatWindow = document.getElementById("chat-window");
+    const closeChat = document.getElementById("close-chat");
+    const sendBtn = document.getElementById("send-btn");
+    const userInput = document.getElementById("user-input");
+    const chatBody = document.getElementById("chat-body");
 
-// Close chat window
-document.getElementById("close-chat").addEventListener("click", function () {
-    document.getElementById("chat-window").style.display = "none";
-});
+    // Particle effect for send button
+    sendBtn.addEventListener('mouseenter', function() {
+        const particle = this.querySelector('.send-btn-particle');
+        particle.style.transform = 'scale(2)';
+    });
 
-// Handle sending message
-document.getElementById("send-btn").addEventListener("click", async function () {
-    var userInput = document.getElementById("user-input").value;
-    if (userInput.trim() !== "") {
-        // Show user message
-        addMessage(userInput, "user");
+    sendBtn.addEventListener('mouseleave', function() {
+        const particle = this.querySelector('.send-btn-particle');
+        particle.style.transform = 'scale(0)';
+    });
 
-        // Clear input field
-        document.getElementById("user-input").value = "";
+    // Auto-resize textarea
+    userInput.addEventListener('input', function() {
+        this.style.height = 'auto';
+        const maxHeight = 100;
+        const newHeight = Math.min(this.scrollHeight, maxHeight);
+        this.style.height = newHeight + 'px';
+        
+        // Ensure chat body stays scrolled to bottom when input grows
+        chatBody.scrollTo({
+            top: chatBody.scrollHeight,
+            behavior: 'smooth'
+        });
+    });
 
-        // Show loading AI message
-        addMessage("Thinking...", "ai");
+    chatToggle.addEventListener("click", function() {
+        chatWindow.classList.toggle("show");
+        if (chatWindow.classList.contains("show")) {
+            userInput.focus();
+            // Add particle effect to button
+            this.classList.add("active");
+        } else {
+            this.classList.remove("active");
+        }
+    });
+
+    closeChat.addEventListener("click", function() {
+        chatWindow.classList.remove("show");
+        chatToggle.classList.remove("active");
+    });
+
+    // Prevent empty messages
+    async function sendMessage() {
+        const message = userInput.value.trim();
+        if (message === "") return;
+
+        // Reset textarea height
+        userInput.value = "";
+        userInput.style.height = 'auto';
+
+        // Add user message
+        addMessage(message, "user");
+
+        // Show typing indicator
+        const typingIndicator = document.createElement("div");
+        typingIndicator.className = "message ai typing";
+        typingIndicator.innerHTML = `
+            <div class="ai-message-wrapper">
+                <img src="/static/images/ai.svg" alt="AI Avatar" class="avatar">
+                <div class="typing-animation">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+        `;
+        chatBody.appendChild(typingIndicator);
+        chatBody.scrollTop = chatBody.scrollHeight;
 
         try {
-            // Send user input to the backend using fetch
             const response = await fetch('/ask', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ question: userInput })
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ question: message })
             });
-
             const data = await response.json();
+
+            // Remove typing indicator
+            chatBody.removeChild(typingIndicator);
+            
             if (data.response) {
-                // Display AI response
-                updateAIResponse(data.response);
+                addMessage(data.response, "ai");
             } else {
-                updateAIResponse("Sorry, I couldn't understand that.");
+                addMessage("I couldn't process that request.", "ai");
             }
         } catch (error) {
-            updateAIResponse("Sorry, I'm having trouble connecting to the server.");
+            chatBody.removeChild(typingIndicator);
+            addMessage("I'm having trouble connecting to the server.", "ai");
+            console.error("Error:", error);
         }
     }
-});
 
-// Add user or AI message to the chat
-function addMessage(message, sender) {
-    var chatBody = document.getElementById("chat-body");
-    var messageElement = document.createElement("div");
-    messageElement.classList.add("message", sender);
-    messageElement.textContent = message;
-    chatBody.appendChild(messageElement);
-    chatBody.scrollTop = chatBody.scrollHeight; // Scroll to bottom
-}
+    sendBtn.addEventListener("click", sendMessage);
+    userInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
 
-// Update AI response message
-function updateAIResponse(message) {
-    var chatBody = document.getElementById("chat-body");
-    var aiMessageElement = chatBody.querySelector(".message.ai");
-    if (aiMessageElement) {
-        aiMessageElement.textContent = message;
+    function addMessage(message, sender) {
+        const messageElement = document.createElement("div");
+        messageElement.className = `message ${sender}`;
+        
+        const wrapper = document.createElement("div");
+        wrapper.className = `${sender}-message-wrapper`;
+        
+        const content = document.createElement("div");
+        content.className = "message-content";
+        content.textContent = message;
+        
+        const avatar = document.createElement("img");
+        avatar.className = "avatar";
+        avatar.alt = `${sender} Avatar`;
+        avatar.src = sender === "user" 
+            ? "/static/images/person.svg" 
+            : "/static/images/ai.jpg";
+
+        if (sender === "user") {
+            wrapper.appendChild(content);
+            wrapper.appendChild(avatar);
+        } else {
+            wrapper.appendChild(avatar);
+            wrapper.appendChild(content);
+        }
+        
+        messageElement.appendChild(wrapper);
+        chatBody.appendChild(messageElement);
+        
+        chatBody.scrollTo({
+            top: chatBody.scrollHeight,
+            behavior: 'smooth'
+        });
     }
-}
 
-// Optional: Handle "Enter" key for sending messages
-document.getElementById("user-input").addEventListener("keypress", function (e) {
-    if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault();
-        document.getElementById("send-btn").click();
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
     }
 });
 

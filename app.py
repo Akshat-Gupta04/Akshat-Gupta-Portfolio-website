@@ -16,7 +16,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 # Initialize Flask app and enable CORS
 app = Flask(__name__)
 CORS(app)
-app.secret_key = "your_secret_key_here"  # Needed for session tracking
+app.secret_key = "1234qazx"  # Needed for session tracking
 
 # Initialize the LLM model (GPT-3.5-turbo)
 llm = ChatOpenAI(model="gpt-3.5-turbo", openai_api_key=openai.api_key)
@@ -62,7 +62,7 @@ Akshat Gupta is an AI enthusiast with expertise in machine learning, deep learni
 - **English-Hindi Translation**: A transformer model built from scratch to translate English text to Hindi, demonstrating core NLP and deep learning techniques.
 
 If asked an out-of-context question, respond with:
-"Sorry, I can only provide information related to Akshat Gupta's projects."
+"Sorry, I can only provide information related to Akshat Gupta and his projects."
 
 If greeted, respond with:
 "Hello! How can I assist you today?"

@@ -1058,21 +1058,58 @@
 
   <!-- Floating Chat Button -->
   <div class="floating-chat-btn">
-    <button id="chat-toggle" class="btn">
-      <img src="{{ url_for('static', filename='images/chat.svg') }}" alt="Chat Bot Icon" style="width: 24px; height: 24px;">
+    <button id="chat-toggle" class="btn pulse-effect">
+      <div class="particle-ring"></div>
+      <img src="{{ url_for('static', filename='images/chat.svg') }}" alt="Chat" width="24" height="24">
     </button>
   </div>
 
   <!-- Floating Chat Window -->
-  <div id="chat-window" class="floating-chat-window d-flex flex-column">
+  <div id="chat-window" class="floating-chat-window">
     <div class="chat-header">
-      <h5>AI Assistant</h5>
-      <button id="close-chat" class="close-btn">&times;</button>
+      <div class="ai-status">
+        <div class="ai-indicator"></div>
+        <div class="ai-info">
+          <span class="typing-text">AI Assistant</span>
+          <span class="status">Online</span>
+        </div>
+      </div>
+      <button id="close-chat" class="close-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
     </div>
-    <div class="chat-body flex-grow-1" id="chat-body"></div>
-    <div class="chat-input">
-      <textarea id="user-input" placeholder="Ask me anything..." rows="2"></textarea>
-      <button id="send-btn">Send</button>
+    
+    <div class="chat-body" id="chat-body">
+      <div class="welcome-message">
+        <div class="ai-avatar-large">
+          <div class="avatar-ring"></div>
+          <img src="{{ url_for('static', filename='images/ai.jpg') }}" alt="AI Avatar">
+        </div>
+        <div class="welcome-text">
+          <h3>Hello! I'm your AI assistant</h3>
+          <p>I can help you learn more about Akshat's projects and experience.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-input-wrapper">
+      <div class="chat-input">
+        <textarea id="user-input" placeholder="Ask me anything..." rows="1"></textarea>
+        <button id="send-btn" class="send-btn-animated">
+          <div class="send-btn-particle"></div>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="input-features">
+        <div class="feature-dots">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="input-suggestion">Try asking about specific projects</div>
+      </div>
     </div>
   </div>
 
@@ -1146,7 +1183,7 @@
       `;
     } else if (sender === "ai") {
       messageElement.innerHTML = `
-        <img src="{{ url_for('static', filename='images/ai.svg') }}" alt="AI Avatar" class="avatar">
+        <img src="{{ url_for('static', filename='images/ai.jpg') }}" alt="AI Avatar" class="avatar">
         <div class="message-content">${escapeHtml(message)}</div>
       `;
     }
