@@ -4,6 +4,15 @@ body {
   line-height: 1.7;
   background-color: #f8f9fc;
   padding-top: 70px; /* Adjust based on navbar height */
+  background: linear-gradient(-45deg, #f8f9fc, #e8eeff, #def6e5, #f0f8ff);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .section {
@@ -90,17 +99,45 @@ body {
 #animated-name:hover {
   cursor: pointer;
 }
-/* Main Banner Section */
-/* Main Banner Section */
-.main-banner {
-  background: linear-gradient(to bottom right, #3bb363, #def6e5); /* Dark green to light pastel green */
-  color: #ffffff;
-  padding: 120px 0;
+/* Dynamic Background Utilities */
+.dynamic-background {
   position: relative;
+  overflow: hidden;
+}
+
+.dynamic-background::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  opacity: 0.15;
+  animation: rotate 25s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Main Banner Section - Enhanced */
+.main-banner {
+  background: linear-gradient(-45deg, #3bb363, #2b683d, #5c9078, #025558);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0;
   display: flex;
-  align-items: center; /* Vertically align text and image */
-  justify-content: space-between; /* Space between text and image */
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  align-items: center;
+}
+
+/* Content Container */
+.main-banner .container {
+  position: relative;
+  z-index: 2;
 }
 
 /* Text Section */
@@ -110,8 +147,68 @@ body {
   position: relative;
 }
 
-.dark-text {
-  color: #000000 !important;
+/* Image Container */
+.banner-image-container {
+  position: relative;
+  background: white; /* Add white background behind image */
+  border-radius: 10px;
+  padding: 10px;
+  z-index: 3; /* Ensure it's above the background effects */
+  isolation: isolate; /* Creates a new stacking context */
+}
+
+/* Image Section */
+.banner-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  object-fit: contain;
+  border: none;
+  box-shadow: none;
+  border-radius: 10px;
+  transition: width 0.3s ease-in-out;
+  display: block; /* Removes any potential spacing issues */
+  position: relative;
+  z-index: 3;
+  backdrop-filter: none; /* Ensures no background effects affect the image */
+  -webkit-backdrop-filter: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-banner {
+    padding: 80px 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .banner-image-container {
+    margin-top: 20px;
+    width: 90%;
+  }
+
+  .banner-image {
+    max-width: 100%;
+  }
+
+  .main-banner .col-lg-6 {
+    text-align: left;
+  }
+}
+
+@media (max-width: 576px) {
+  .main-banner {
+    padding: 60px 15px;
+  }
+
+  .banner-image-container {
+    width: 95%;
+  }
+
+  .main-banner .btn {
+    padding: 12px 25px;
+    font-size: 0.9rem;
+  }
 }
 
 /* Button Styling */
@@ -180,11 +277,22 @@ body {
 /* About Section Styles */
 /* About Section */
 .about {
-  background: #c0bdfa; /* A cool light blue background for a techy feel */
-  padding: 100px 0;
-  text-align: center;
   position: relative;
+  background: linear-gradient(-45deg, #ca3e3e, #8174f1, #356d7a, #fe557f);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  padding: 100px 0;
+  color: white;
   overflow: hidden;
+}
+
+.about::before {
+  background: repeating-linear-gradient(45deg, 
+    rgba(255,255,255,0.1) 0px,
+    rgba(255,255,255,0.1) 20px,
+    transparent 20px,
+    transparent 40px
+  );
 }
 
 .section-title {
@@ -345,10 +453,25 @@ body {
 /* Skills Section Styling */
 .skills {
   position: relative;
-  background: linear-gradient(135deg, #1B1B2F, #162447); /* AI-Inspired Dark Gradient */
+  background: linear-gradient(-45deg, #191970, #294a5f, #1d3557, #2e7646);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
   padding: 100px 0;
-  text-align: center;
   color: white;
+  overflow: hidden;
+}
+
+.skills::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.2;
+  z-index: 0;
+  animation: moveBG 15s linear infinite;
 }
 
 /* Floating AI Glow */
@@ -418,7 +541,7 @@ body {
   font-size: 1.4rem;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #FF4081;
+  color: #491a29;
 }
 
 /* Skill Descriptions */
@@ -469,8 +592,50 @@ body {
 /* Projects Section Styles */
 /* Projects Section */
 .projects {
-  background: linear-gradient(to bottom left, #fba784, #a4e1d3);
+  position: relative;
+  background: linear-gradient(-45deg, #703319, #b48d65, #aa6349, #5d6039);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
   padding: 100px 0;
+  color: white;
+  overflow: hidden;
+}
+
+.projects::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.2;
+  z-index: 0;
+  animation: moveBG 15s linear infinite;
+}
+
+/* Keep the existing gradientBG animation if not already defined elsewhere */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes moveBG {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
+}
+
+/* Add this to ensure content stays above the animated background */
+.projects .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Update text colors for better visibility */
+.projects h2,
+.projects .text-center {
+  color: white;
 }
 
 .project-item {
@@ -587,11 +752,205 @@ body {
 
 /* Certifications Section Styles */
 .certifications {
-  background: linear-gradient(to right, #ffe6f3, #f8d9e8);
+  position: relative;
+  background: linear-gradient(-45deg, #16222A, #3A6073, #000046, #1CB5E0);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
   padding: 100px 0;
-  color: #333;
+  color: white;
+  overflow: hidden;
 }
 
+/* Research Section Styles */
+.research {
+  position: relative;
+  background: linear-gradient(-45deg, #000428, #004e92, #2C3E50, #1A1A1D);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  padding: 100px 0;
+  color: white;
+  overflow: hidden;
+}
+
+/* Shared animation keyframes */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Enhanced animation for these sections */
+.research,
+.certifications {
+  animation: energeticGradient 12s ease infinite;
+}
+
+@keyframes energeticGradient {
+  0% {
+    background-position: 0% 50%;
+    background-size: 400% 400%;
+  }
+  25% {
+    background-size: 200% 200%;
+  }
+  50% {
+    background-position: 100% 50%;
+    background-size: 300% 300%;
+  }
+  75% {
+    background-size: 200% 200%;
+  }
+  100% {
+    background-position: 0% 50%;
+    background-size: 400% 400%;
+  }
+}
+
+/* Shared pattern overlay for all sections */
+.about::before,
+.certifications::before,
+.research::before,
+.certificates::before,
+.skills::before,
+.projects::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.2;
+  z-index: 0;
+  animation: moveBG 15s linear infinite;
+}
+
+/* Enhanced overlay pattern for these sections */
+.research::before,
+.certifications::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.08;
+  z-index: 0;
+  animation: energeticPattern 15s linear infinite;
+}
+
+@keyframes energeticPattern {
+  0% {
+    background-position: 0 0;
+    opacity: 0.05;
+  }
+  25% {
+    opacity: 0.08;
+  }
+  50% {
+    background-position: 100px 100px;
+    opacity: 0.1;
+  }
+  75% {
+    opacity: 0.08;
+  }
+  100% {
+    background-position: 200px 200px;
+    opacity: 0.05;
+  }
+}
+
+/* Shared container styles */
+.about .container,
+.certifications .container,
+.research .container,
+.skills .container,
+.projects .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Animation for background pattern movement */
+@keyframes moveBG {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
+}
+
+/* Enhanced card styles for these sections */
+.research-card,
+.certification-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.research-card:hover,
+.certification-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 45px 0 rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Text styling for research cards */
+.research-card h4 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.research-card p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 20px;
+  line-height: 1.6;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Button styling */
+.research-links .btn {
+  margin-top: 10px;
+  background-color: rgba(108, 117, 125, 0.8);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.research-links .btn:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #2d3e50;
+  border-color: transparent;
+  transform: translateY(-2px);
+}
+
+/* Ensure text remains readable in all states */
+.research-card:hover h4,
+.research-card:hover p {
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about,
+  .certifications,
+  .research,
+  .skills,
+  .projects {
+    padding: 60px 0;
+  }
+}
 /* Contact Section Styles */
 /* Contact Section Styles */
 /* Container Setup */
@@ -605,9 +964,24 @@ body {
 .contact {
   position: relative;
   background: linear-gradient(135deg, #FFD3A5, #FFB6C1); /* Soft gradient background */
-  padding: 100px 0;
-  text-align: center;
+  position: relative;
   overflow: hidden;
+  background: linear-gradient(-45deg, #3bb363, #457b9d, #1d3557, #ff3c83);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.2;
+  z-index: 0;
+  animation: moveBG 15s linear infinite;
 }
 
 /* Section Title & Subtitle */
@@ -620,7 +994,7 @@ body {
 
 .section-subtitle {
   font-size: 1.1rem;
-  color: #555;
+  color: #eceeee;
   margin-bottom: 50px;
 }
 
@@ -1286,9 +1660,12 @@ color: #ffffff !important;
 /* Academic Section Styling */
 /* Academic Highlights & Certifications Section */
 .academics {
-  background: linear-gradient(135deg, #fdf3e1, #ffe0b2);
-  padding: 100px 0;
   position: relative;
+  background: linear-gradient(-45deg, #1a2a6c, #b21f1f, #1a2a6c, #451f1f);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  padding: 100px 0;
+  color: white;
   overflow: hidden;
 }
 
@@ -1408,52 +1785,74 @@ color: #ffffff !important;
 /* Research Papers Section Styles */
 /* Research Papers Section Styles */
 .research {
-  background: #c8dcf9; /* Light neutral background */
+  position: relative;
+  background: linear-gradient(-45deg, #000428, #004e92, #2C3E50, #1A1A1D);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
   padding: 100px 0;
-  text-align: center;
-  color: #333; /* Dark text for readability */
+  color: white;
+  overflow: hidden;
 }
 
 /* Research Paper Card */
 .research-card {
-  background: #ffffff; /* White background for cards */
-  border-radius: 10px;
-  padding: 30px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: left;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .research-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 45px 0 rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.85); /* Darker background on hover */
 }
 
+/* Text styling for research cards */
 .research-card h4 {
   font-size: 1.4rem;
   font-weight: bold;
-  color: #2d3e50; /* Dark blue-gray for professionalism */
+  color: white;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .research-card p {
-  font-size: 1rem;
-  color: #555; /* Slightly lighter text for descriptions */
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 20px;
+  line-height: 1.6;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
+/* Button styling */
 .research-links .btn {
   margin-top: 10px;
-  background-color: #6c757d; /* Professional dark gray for buttons */
-  color: #ffffff;
+  background-color: rgba(108, 117, 125, 0.8);
+  color: white;
   padding: 8px 15px;
   border-radius: 30px;
   font-size: 0.9rem;
-  border: 2px solid #6c757d; /* Gray border for buttons */
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
 }
 
 .research-links .btn:hover {
-  background-color: #5a6268; /* Darker gray on hover */
-  border-color: #5a6268;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #2d3e50;
+  border-color: transparent;
+  transform: translateY(-2px);
+}
+
+/* Ensure text remains readable in all states */
+.research-card:hover h4,
+.research-card:hover p {
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 /* Responsive Adjustments for Research Section */
