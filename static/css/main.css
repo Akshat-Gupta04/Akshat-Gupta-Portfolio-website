@@ -1127,15 +1127,17 @@ footer .social-links a:hover {
 /* Floating Chat Button Styles */
 .floating-chat-btn {
   position: fixed;
-  right: 25px;
-  bottom: 25px;
+  right: clamp(15px, 3vw, 25px);
+  bottom: clamp(15px, 3vh, 25px);
   z-index: 9999;
 }
 
 .floating-chat-btn button {
   background: linear-gradient(135deg, #3a8ffe, #9658fe);
   color: white;
-  padding: 15px;
+  width: clamp(50px, 8vw, 60px);
+  height: clamp(50px, 8vw, 60px);
+  padding: clamp(10px, 2vw, 15px);
   border-radius: 50%;
   border: none;
   cursor: pointer;
@@ -1149,9 +1151,9 @@ footer .social-links a:hover {
 }
 
 .floating-chat-btn button img {
-  width: 24px;
-  height: 24px;
-  filter: brightness(0) invert(1); /* Makes the SVG white */
+  width: clamp(20px, 4vw, 24px);
+  height: clamp(20px, 4vw, 24px);
+  filter: brightness(0) invert(1);
   transition: transform 0.3s ease;
 }
 
@@ -1179,10 +1181,10 @@ footer .social-links a:hover {
 
 .floating-chat-window {
   position: fixed;
-  right: 25px;
+  right: clamp(15px, 3vw, 25px);
   bottom: -100%;
-  width: 380px;
-  height: 600px;
+  width: clamp(300px, 90vw, 380px);
+  height: clamp(400px, 80vh, 600px);
   background: rgba(15, 15, 20, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 20px;
@@ -1195,7 +1197,7 @@ footer .social-links a:hover {
 }
 
 .floating-chat-window.show {
-  bottom: 25px;
+  bottom: clamp(15px, 3vh, 25px);
   animation: windowAppear 0.5s forwards;
 }
 
@@ -1205,7 +1207,7 @@ footer .social-links a:hover {
 }
 
 .chat-header {
-  padding: 20px;
+  padding: clamp(15px, 2vh, 20px);
   background: linear-gradient(135deg, rgba(58, 143, 254, 0.1), rgba(150, 88, 254, 0.1));
   border-radius: 20px 20px 0 0;
   color: white;
